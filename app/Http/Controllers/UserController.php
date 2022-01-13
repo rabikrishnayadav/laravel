@@ -17,4 +17,9 @@ class UserController extends Controller
     function loadView(){
         return view('login');
     }
+
+    function usersfun(){
+        $friends = ['Ram','bharat','laxman','satrudhan'];
+        return view('users',['name'=>'Rabi Kr Yadav', 'friends'=>$friends]);
+    }
 }

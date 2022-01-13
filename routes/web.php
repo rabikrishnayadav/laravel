@@ -39,5 +39,5 @@ Route::get('/userlogin', function () {
 });
 
 //calling the users page 
-Route::view('user-data','users');
+Route::get('user-data',[UserController::class,'usersfun']);
 
