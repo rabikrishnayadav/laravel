@@ -57,3 +57,7 @@ Route::get('db',[UserController::class,'databaseCon']);
 
 // creating route for user model
 Route::get('users',[UserController::class,'userModel']);
+
+// creating route for http client
+Route::get('users-data-api',[UserController::class,'userDataHttpClient']);
+Route::view('userdataapi','userdata_api');

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 // importing the user model
 use App\Models\User;
 
+// import the http client
+use Illuminate\Support\Facades\Http;
+
 class UserController extends Controller
 {
     // create function for Register page show on the browser
@@ -35,6 +38,12 @@ class UserController extends Controller
     // create function for user model
     function userModel(){
         return User::all();
+    }
+
+    // create function for user http client 
+    function userDataHttpClient(){
+        $api_data = Http::get('https://reqres.in/api/users?page=1');
+        return view('userdata_api',['collection'=>$api_data['data']]);
     }
 
 
