@@ -152,16 +152,37 @@
                 It is a laravel template engine. It's work is converting the plan tags into PHP tags.<br> It's all example available in users.blade.php file.
                 <br>It has many advantage like Blade Template Expression,Conditions,For and Foreach Loop etc.
                 <li>Middleware</li>
-                There are Three Types of Middleware
-                <ul>
-                    <li>Middleware</li>
-                    <li>Route Middleware</li>
-                    <li>Group Middleware</li>
-                    It's use for some specific route. we can manage many route from one group middleware<br>
+                There are Three Types of Middleware<br>
                 For Creating a new middleware.<br>
                 Syntax: php artisan make:middleware mdiddlewareName<br>
                 Example: php artisan make:middleware ageCheck<br>
                 for check it's created or not goto dir 'App\Http\Middleware' folder and find the middleware name there is available.<br>
+                <ul>
+                    <li>Middleware</li>
+                    <li>Route Middleware</li>
+                    This middleware is use on one route at a time. then for another route again we have to write  same code for touting.<br>
+                    After the creating the middleware register it<br>
+                     for register goto dir 'App\Http\Kernal.php' and write this code. Under ' protected $routeMiddleware = []'<br>
+                    <code>
+                     'protectedPage' => \App\Http\Middleware\ageCheck::class,<br>
+                     </code>
+                     After registering the middleware then make condition on ageCheck.php file<br>
+                    Under:<br>
+                     <code>
+                     public function handle(Request $request, Closure $next){<br>
+                        if ($request->age && $request->age<18) {<br>
+                            return redirect('access-denied-page');<br>
+                            return $next($request);<br>
+                        }<br>
+                        }<br>
+                    </code>
+                     <b>crate route for use the middleware on web.php file</b><br>
+                     Syntax: Route::view('home-page','home')->middleware('Registered_Middleware_Name');<br>
+                     Example:<br>
+                     // this route for calling the view home page
+                    Route::view('home-page','home')->middleware('protectedPage');
+                    <li>Group Middleware</li>
+                    It's use for some specific route. we can manage many route from one group middleware<br>
                 After the creating the middleware register it<br>
                 for register goto dir 'App\Http\Kernal.php' and write this code. Under 'protected $middlewareGroups = []'<br>
                 <code>
@@ -171,15 +192,14 @@
                 </code>
                 After registering the middleware then make condition on ageCheck.php file<br>
                 Under:<br>
-                 public function handle(Request $request, Closure $next)<br>
-                    {<br>
-                    return $next($request);<br>
-                    }<br>
-                <code>
-                    if ($request->age && $request->age<18) {<br>
-                        return redirect('access-denied-page');<br>
-                    }<br>
-                </code>
+                 <code>
+                     public function handle(Request $request, Closure $next){<br>
+                        if ($request->age && $request->age<18) {<br>
+                            return redirect('access-denied-page');<br>
+                            return $next($request);<br>
+                        }<br>
+                        }<br>
+                    </code>
                 Finally crate route for use the middleware<br>
                 Example:<br>
                 <code>

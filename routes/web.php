@@ -38,13 +38,13 @@ Route::get('/userlogin', function () {
 // creating route for no access page
 Route::view('access-denied-page','noaccess');
 
+// this route for calling the view home page
+    Route::view('home-page','home')->middleware('protectedPage');
+
 // creat route for froup middleware
 Route::group(['middleware'=>['protectPage']],function(){
     
     //this route for calling the view users page
     Route::get('user-data',[UserController::class,'usersfun']);
     
-    // this route for calling the view home page
-    Route::view('home-page','home');
-
 });
