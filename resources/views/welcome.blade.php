@@ -218,6 +218,6 @@
                 <li>Config</li>
                 <li>Dependency File</li>
             </ol>
-        </div>
+        </div><br><hr><br><h1 style="text-align:center; background:green;">For Laravel & MySql Database Part<br><a href="/database">Click here</a></h1>
     </body>
 </html>

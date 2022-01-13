@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');     // this will show result in brower when you return something or echo
 });
 
+Route::get('/database', function () {
+    return view('database_part');    
+});
+
 // this route for calling the controller of register page for show on the browser
 Route::post('users',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');
@@ -44,7 +48,9 @@ Route::view('access-denied-page','noaccess');
 // creat route for froup middleware
 Route::group(['middleware'=>['protectPage']],function(){
     
-    //this route for calling the view users page
-    Route::get('user-data',[UserController::class,'usersfun']);
-    
+//this route for calling the view users page
+Route::get('user-data',[UserController::class,'usersfun']);    
 });
+
+// create route for calling 
+Route::get('db',[UserController::class,'databaseCon']);
