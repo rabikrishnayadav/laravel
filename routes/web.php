@@ -20,12 +20,9 @@ Route::get('/', function () {
     return view('welcome');     // this will show result in brower when you return something or echo
 });
 
-// calling the controller
-
-Route::get('register',[UserController::class,'show']);
-
-// calling the controller for Pass Params with URL
-Route::get('user/{id}',[UserController::class,'showparam']);
+// this route for calling the controller of register page for show on the browser
+Route::post('users',[UserController::class,'loadRegisterPage']);
+Route::view('registration-page','register');
 
 // calling the controller for view file login page
 Route::get('login',[UserController::class,'loadView']);

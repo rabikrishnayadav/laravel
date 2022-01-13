@@ -5,13 +5,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // create function
-    function show(){
-        return view('register');
+    // create function for Register page show on the browser
+    function loadRegisterPage(Request $req){
+         return $req->input();
     }
-
-    //Pass Params with URL
-    function showparam($id){return $id;}
 
     // creating function for showing the login page on the browser
     function loadView(){
