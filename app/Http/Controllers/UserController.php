@@ -12,4 +12,9 @@ class UserController extends Controller
 
     //Pass Params with URL
     function showparam($id){return $id;}
+
+    // creating function for showing the login page on the browser
+    function loadView(){
+        return view('login');
+    }
 }

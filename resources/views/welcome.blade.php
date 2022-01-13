@@ -40,7 +40,6 @@
                 <li>Html</li>
                 For Writing HTML Code goto the 'resources/views' and create file put name as 'file_name.blade.php'<br>
                 Then make change or create route to the 'routes/web.php' file.
-                <li>Model</li>
                 <li>Controller</li>
                 <ul>
                     <li>What is Controller</li>
@@ -85,7 +84,51 @@
 
                      for checking goto website url 127.0.0.1:8000/user/<mark>Write your word</mark>
                 </ul>
+                <li>View</li>
+                <ul>
+                    <li>What is View</li>
+                    View is also available in all framework. In view here we are store all the HTML file which is display to the user(on browser).<br>
+                    <li>Make a View</li>
+                    For making a new view goto the 'resources/views' folder then create new file put name as 'file_name.blade.php'
+                    <li>Call View</li>
+                    View is calling from two method<br>
+                    1) From Controller<br>
+                    For calling the view from Controller there are two step<br>
+                    i) First Step:- Create a function in Controller just go to the dir 'app/Http/Controllers' and open your controller and inside the controller file under 'class ControllerName extends Controller' create your function.<br>
+                    <code>
+                        namespace App\Http\Controllers;<br>
+                        use Illuminate\Http\Request;<br>
+                        class UserController extends Controller<br>
+                        {<br>
+                        // creating function for showing the login page on the browser<br>
+                        function loadView(){<br>
+                            return view('login');<br>
+                        }<br>
+                    </code><br>
+                    ii) Second Step: call the controller from the Route For make the new route<br>
+                    Syntax: Route::get('login',[UserController::class,'loadView']);<br>
+                    Example:<br>
+                    // calling the controller for view file login page<br>
+                    Route::get('login',[UserController::class,'loadView']);<br>
+                    2) Direct from Route<br>
+                    i) First method<br>
+                    Syntax: Route::view('url_path_name','view_file_name');
+                    Example 1:<br>
+                    // calling the view for the login page<br>
+                    Route::view('signin','login');<br>
+                    ii) Second Method<br>
+                    Syntax:<br>
+                    Route::get('/url_name', function () {<br>
+                    return view('view_file_name');  <br>
+                    });<br>
+                    Example:<br>
+                    // calling the view for the login page second method<br>
+                    Route::get('/userlogin', function () {<br>
+                    return view('login');  <br>
+                    });<br>
+                </ul>
                 <li>Routing</li>
+                <li>Model</li>
                 <li>File Store</li>
                 <li>Config</li>
                 <li>Dependency File</li>

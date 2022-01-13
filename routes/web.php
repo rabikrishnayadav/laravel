@@ -22,7 +22,19 @@ Route::get('/', function () {
 
 // calling the controller
 
-Route::get('user',[UserController::class,'show']);
+Route::get('register',[UserController::class,'show']);
 
-// Pass Params with URL
+// calling the controller for Pass Params with URL
 Route::get('user/{id}',[UserController::class,'showparam']);
+
+// calling the controller for view file login page
+Route::get('login',[UserController::class,'loadView']);
+
+// calling the view for the login page first method
+Route::view('signin','login');
+
+// calling the view for the login page second method
+Route::get('/userlogin', function () {
+    return view('login');  
+});
+
