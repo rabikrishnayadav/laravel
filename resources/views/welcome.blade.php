@@ -212,8 +212,41 @@
                     });<br>
                 </code>
                 </ul>
-                <li>Routing</li>
                 <li>Model</li>
+                <ul>
+                    <li>What is model</li>
+                    Map Database table with class Name. and define database structure also we can write own logic.<br>
+                    In model we have to write singular name of class but in database there is pular name<br>
+                    <li>make model</li>
+                    for making new model just write syntax on terminal<br>
+                    Syntax: php artisan make:model modelName<br>
+                    Example: php artisan make:model User<br>
+                    For checking it is created or not goto dir 'App\Models' folder and see there is available that model which is created.<br>
+                    <li>Fetch Data From Model</li>
+                    before the fetch data we must have Controller and that conroller is routed.<br>
+                    For making controller and route already i did before.<br>
+                    Now after creating the model goto the Controller file and import this line.<br>
+                    Example:<br>
+                    <code>
+                        // importing the user model<br>
+                       use App\Models\User;<br>
+                       Then Create one function inside Controller file<br>
+                       // create function for user model<br>
+                        function userModel(){<br>
+                            return User::all();<br>
+                        }<br>
+                    </code>
+                    <li>Show Data</li>
+                    for showing the data make sure model is created and it's function is defined inside the Controller file.<br>
+                    Then goto the web.php file and create one route for the defined function.<br>
+                    Example:<br>
+                    <code>
+                        // creating route for user model<br>
+                        Route::get('users',[UserController::class,'userModel']);<br>
+                    </code>
+                    Now we can able to see the data from users table in database.<br>
+                </ul>
+                <li>Routing</li>
                 <li>File Store</li>
                 <li>Config</li>
                 <li>Dependency File</li>

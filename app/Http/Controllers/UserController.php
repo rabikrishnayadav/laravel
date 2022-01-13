@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
+
 // importing the databse file
 use Illuminate\Support\Facades\DB;
+
+// importing the user model
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -25,12 +29,13 @@ class UserController extends Controller
 
     // create function for database connection
     function databaseCon(){
-        return DB::select('select * from users');
+        return DB::select("select * from users");
     }
 
-
-
-
+    // create function for user model
+    function userModel(){
+        return User::all();
+    }
 
 
 }

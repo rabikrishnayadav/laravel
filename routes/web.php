@@ -54,3 +54,6 @@ Route::get('user-data',[UserController::class,'usersfun']);
 
 // create route for calling 
 Route::get('db',[UserController::class,'databaseCon']);
+
+// creating route for user model
+Route::get('users',[UserController::class,'userModel']);
