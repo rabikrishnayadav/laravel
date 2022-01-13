@@ -47,6 +47,24 @@ ii)Syntax: php artisan migrate<br>
 	<li>password_resets</li>
 	<li>personal_access_tokens</li>
 </ol>
-</div>
+</div><br><hr><br>
+<div class="container">
+	<h1 style="text-align:center">Http Methods</h1>
+	There are 7 type of Http Methods<br>
+	<ol>
+		<li>GET</li>
+		This method is used for getting(showing) some data from the server with http
+		<li>POST</li>
+		This method is used for putting(saving) the data into the server(database)
+		<li>PUT</li>
+		This method is used for update the data into the server(database)
+		<li>DELETE</li>
+		This method is used for delete the data into the server(database)
+		<li>HEAD</li>
+		<li>PATCH</li>
+		<li>OPTIONS</li>
+	</ol>
+	All these method we can use with form and we must have to use with API.
+</div><br><hr><br>
 </body>
 </html>

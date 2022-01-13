@@ -20,8 +20,8 @@ class UserController extends Controller
     }
 
     // creating function for showing the login page on the browser
-    function loadView(){
-        return view('login');
+    function loadLoginPage(Request $req){
+        return $req->input();
     }
 
     function usersfun(){

@@ -28,16 +28,20 @@ Route::get('/database', function () {
 Route::post('users',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');
 
-// calling the controller for view file login page
-Route::get('login',[UserController::class,'loadView']);
-
 // calling the view for the login page first method
 Route::view('signin','login');
 
-// calling the view for the login page second method
-Route::get('/userlogin', function () {
-    return view('login');  
-});
+// calling the controller for view file login page
+Route::get('login_with_get',[UserController::class,'loadLoginPage']);
+
+// calling the controller for view file login page
+Route::post('login_with_post',[UserController::class,'loadLoginPage']);
+
+// calling the controller for view file login page
+Route::put('Updated_Data_with_put_method',[UserController::class,'loadLoginPage']);
+
+// calling the controller for view file login page
+Route::delete('Deleted_data_with_delete_method',[UserController::class,'loadLoginPage']);
 
 // creating route for no access page
 Route::view('access-denied-page','noaccess');
