@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     // create function for Register page show on the browser
-    function loadRegisterPage(Request $req){
-         return $req->input();
+    function loadRegisterPage(Request $request){
+         return $request->input();
     }
 
     // creating function for showing the login page on the browser

@@ -32,6 +32,9 @@
         font-weight: bolder;
         margin-left: 10px;
         }
+        code{
+            color: brown;
+        }
         </style>
     </head>
     <body><x-header />
@@ -148,6 +151,47 @@
                 <li>Blade template</li>
                 It is a laravel template engine. It's work is converting the plan tags into PHP tags.<br> It's all example available in users.blade.php file.
                 <br>It has many advantage like Blade Template Expression,Conditions,For and Foreach Loop etc.
+                <li>Middleware</li>
+                There are Three Types of Middleware
+                <ul>
+                    <li>Middleware</li>
+                    <li>Route Middleware</li>
+                    <li>Group Middleware</li>
+                    It's use for some specific route. we can manage many route from one group middleware<br>
+                For Creating a new middleware.<br>
+                Syntax: php artisan make:middleware mdiddlewareName<br>
+                Example: php artisan make:middleware ageCheck<br>
+                for check it's created or not goto dir 'App\Http\Middleware' folder and find the middleware name there is available.<br>
+                After the creating the middleware register it<br>
+                for register goto dir 'App\Http\Kernal.php' and write this code. Under 'protected $middlewareGroups = []'<br>
+                <code>
+                    'protectPage'=>[<br>
+                   \App\Http\Middleware\ageCheck::class,<br>
+                    ]<br>
+                </code>
+                After registering the middleware then make condition on ageCheck.php file<br>
+                Under:<br>
+                 public function handle(Request $request, Closure $next)<br>
+                    {<br>
+                    return $next($request);<br>
+                    }<br>
+                <code>
+                    if ($request->age && $request->age<18) {<br>
+                        return redirect('access-denied-page');<br>
+                    }<br>
+                </code>
+                Finally crate route for use the middleware<br>
+                Example:<br>
+                <code>
+                    // creat route for froup middleware<br>
+                    Route::group(['middleware'=>['protectPage']],function(){<br>
+                        //this route for calling the view users page<br>
+                        Route::get('user-data',[UserController::class,'usersfun']);<br>
+                        // this route for calling the view home page<br>
+                        Route::view('home-page','home');<br>
+                    });<br>
+                </code>
+                </ul>
                 <li>Routing</li>
                 <li>Model</li>
                 <li>File Store</li>

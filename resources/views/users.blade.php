@@ -32,4 +32,9 @@
 <script type="text/javascript">
 	var data = @json($name);
 	document.write('<br>'+data + ' Thank You');
-</script>
+</script><br><hr><br>
+
+
+
+
+
