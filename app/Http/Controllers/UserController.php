@@ -7,7 +7,7 @@ class UserController extends Controller
 {
     // create function
     function show(){
-        return 'Hello from Controller';
+        return view('register');
     }
 
     //Pass Params with URL

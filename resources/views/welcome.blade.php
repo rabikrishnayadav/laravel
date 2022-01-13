@@ -34,7 +34,8 @@
             }
         </style>
     </head>
-    <body><h1 style="text-align:center; background-color:gold;">Laravel First Time</h1>
+    <body><x-header />
+        <h1 style="text-align:center; background-color:gold;">Laravel First Time</h1>
         <div class="container"><h2>File and Folder Structure</h2>
             <ol>
                 <li>Html</li>
@@ -126,6 +127,25 @@
                     Route::get('/userlogin', function () {<br>
                     return view('login');  <br>
                     });<br>
+                </ul>
+                <li>Component</li>
+                <ul>
+                    <li>What is Component</li>
+                    Component is a pices of code which is for use many times.<br>
+                    Means: Write code one time and execute it many time as requirements.<br>
+                    It is a class base file.<br>
+                    <li>Make Component</li>
+                    For Creating Component use a comand line<br>
+                    Syntax: php artisan make:component componentName<br>
+                    Example: php artisan make:component Header<br>
+                    After the enter creating command then it will create two file<br>
+                    i)first file dir 'resources/views/components/' here your one file was created 'header.blade.php' this file for html(front end) code.<br>
+                    ii) second file dir 'app/View/Components/' here your another file was created 'header.php' this file for php dynamic code(back end) code. and we can also use html code here.<br>
+                    <li>Use Component</li>
+                    For Use the component fisrt we must have view and that view is Routed<br>
+                    Then Simply use one line code in view file<br>
+                    Code Syntax: '<'x-component_name />'<br>
+                    Example: '<'x-header />'<br>
                 </ul>
                 <li>Routing</li>
                 <li>Model</li>

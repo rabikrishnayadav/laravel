@@ -38,3 +38,6 @@ Route::get('/userlogin', function () {
     return view('login');  
 });
 
+//calling the users page 
+Route::view('user-data','users');
+
