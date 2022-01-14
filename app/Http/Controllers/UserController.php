@@ -18,6 +18,13 @@ class UserController extends Controller
     function loadRegisterPage(Request $request){
          $data = $request->input('username');
          $request->session()->flash('username',$data);
+
+         $user = new User;
+         $user->name = $request->username;
+         $user->email = $request->email;
+         $user->password = $request->password;
+         $user->save();
+
          return view('register');
     }
 
