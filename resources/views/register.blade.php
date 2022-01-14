@@ -9,9 +9,12 @@
 	}
 </style>
 <x-header />
+@if(session('username'))
+<h3>Data Saved for {{session('username')}} </h3>
+@endif
 <h1 style="text-align:center">Registration Page</h1>
 <div class="container">
-	<form method="post" action="users">
+	<form method="post" action="register">
 		@csrf
 	<div>
 		<label for="username">Username:</label>

@@ -25,7 +25,7 @@ Route::get('/database', function () {
 });
 
 // this route for calling the controller of register page for show on the browser
-Route::post('users',[UserController::class,'loadRegisterPage']);
+Route::post('register',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');
 
 // calling the view for the login page first method

@@ -16,7 +16,9 @@ class UserController extends Controller
 {
     // create function for Register page show on the browser
     function loadRegisterPage(Request $request){
-         return $request->input();
+         $data = $request->input('username');
+         $request->session()->flash('username',$data);
+         return view('register');
     }
 
     // creating function for showing the login page on the browser
