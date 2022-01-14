@@ -58,7 +58,11 @@ Route::get('/login', function(){
 Route::view('access-denied-page','noaccess');
 
 // this route for calling the view home page
-    Route::view('home-page','home')->middleware('protectedPage');
+    
+    Route::get('/home/{lang}',function($lang){
+        App::setlocale($lang);
+        return view('home');
+    });
 
 // creat route for froup middleware
 Route::group(['middleware'=>['protectPage']],function(){
