@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 // importing the controller
 use App\Http\Controllers\UserController;
 
+// importing the member controller
+use App\Http\Controllers\MemberController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,3 +83,8 @@ Route::get('users',[UserController::class,'userModel']);
 // creating route for http client
 Route::get('users-data-api',[UserController::class,'userDataHttpClient']);
 Route::view('userdataapi','userdata_api');
+
+
+// creating route for addmember into database
+Route::view('add','addmember');
+Route::post('add',[MemberController::class,'addMemberData']);
