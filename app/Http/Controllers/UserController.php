@@ -21,7 +21,10 @@ class UserController extends Controller
 
     // creating function for showing the login page on the browser
     function loadLoginPage(Request $req){
-        return $req->input();
+
+        $data = $req->input('username');
+        $req->session()->put('username',$data);
+        return redirect('profile');
     }
 
     function usersfun(){

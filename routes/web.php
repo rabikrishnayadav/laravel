@@ -29,19 +29,29 @@ Route::post('users',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');
 
 // calling the view for the login page first method
-Route::view('signin','login');
+// Route::view('login','login');
 
 // calling the controller for view file login page
-Route::get('login_with_get',[UserController::class,'loadLoginPage']);
+Route::post('login',[UserController::class,'loadLoginPage']);
 
-// calling the controller for view file login page
-Route::post('login_with_post',[UserController::class,'loadLoginPage']);
+// create route for profile page
+Route::view('profile','profile');
 
-// calling the controller for view file login page
-Route::put('Updated_Data_with_put_method',[UserController::class,'loadLoginPage']);
+// create route for logout
+Route::get('/logout', function(){
+    if (session()->has('username')) {
+        session()->pull('username',null);
+    }
+    return redirect('login');
+});
 
-// calling the controller for view file login page
-Route::delete('Deleted_data_with_delete_method',[UserController::class,'loadLoginPage']);
+// create route for logout
+Route::get('/login', function(){
+    if (session()->has('username')) {
+        return redirect('profile');
+    }
+    return view('login');
+});
 
 // creating route for no access page
 Route::view('access-denied-page','noaccess');
