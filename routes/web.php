@@ -36,6 +36,7 @@ Route::post('login',[UserController::class,'loadLoginPage']);
 
 // create route for profile page
 Route::view('profile','profile');
+Route::post('profile',[UserController::class,'loadProfilePage']);
 
 // create route for logout
 Route::get('/logout', function(){

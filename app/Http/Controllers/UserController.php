@@ -34,6 +34,9 @@ class UserController extends Controller
         return view('users',['name'=>'Rabi Kr Yadav', 'friends'=>$friends]);
     }
 
+    function loadProfilePage(Request $req){
+        return $req->file('avtar')->store('img');
+    }
 
     // create function for database connection
     function databaseCon(){
