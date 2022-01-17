@@ -389,5 +389,37 @@ Example:<br>
 // creating route for for delete the particular data in the table inside the database<br>
 Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
+<div class="container">
+	<h1 style="text-align:center">Aggregate Method</h1>
+	It has a database functions which perform mathmatical Calculation<br>
+	first Create the controller<br>
+	Example: php artisan make:controller AggregateController<br>
+	<ul>make the required function inside the AggregateController class in controller file
+		<h4><li>Sum</li></h4>
+	    function sumOperation(){<br>
+	        return DB::table('members')->sum('id'); // it will perform the addition of id number<br>
+	    }<br>
+	    Make the Route for the function<br>
+	    Route::get('addition',[AggregateController::class,'sumOperation']);<br>
+		<h4><li>Max</li></h4>
+		function maxOperation(){<br>
+	        return DB::table('members')->max('id'); // it will perform the maximum of id number<br>
+	    }<br>
+	    Make the Route for the function<br>
+	    Route::get('max',[AggregateController::class,'maxOperation']);<br>
+		<h4><li>Min</li></h4>
+		function minOperation(){<br>
+	        return DB::table('members')->min('id'); // it will perform the minimum of id number<br>
+	    }<br>
+	    Make the Route for the function<br>
+	    Route::get('min',[AggregateController::class,'minOperation']);<br>
+		<h4><li>Avg</li></h4>
+		function avgOperation(){<br>
+	        return DB::table('members')->avg('id'); // it will perform the average number<br>
+	    }<br>
+	    Make the Route for the function<br>
+	    Route::get('avg',[AggregateController::class,'avgOperation']);<br>
+	</ul>
+</div><br><hr><br>
 </body>
 </html>

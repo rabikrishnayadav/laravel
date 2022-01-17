@@ -11,6 +11,9 @@ use App\Http\Controllers\MemberController;
 // importing the memberQueryBuilder controller
 use App\Http\Controllers\MemberQueryBuilder;
 
+// importing the aggregate controller
+use App\Http\Controllers\AggregateController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,3 +134,24 @@ Route::get('update_data',[MemberQueryBuilder::class,'updateMember']);
 
 // creating route for delte the particular data in the table inside the database
 Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);
+
+/*
+|--------------------------------------------------------------------------------------
+|                                Route for Aggregate function
+*/
+
+// route for addtion value show on web page
+Route::get('addition',[AggregateController::class,'sumOperation']);
+
+// route for maximum value show on web page
+Route::get('max',[AggregateController::class,'maxOperation']);
+
+// route for minimum value show on web page
+Route::get('min',[AggregateController::class,'minOperation']);
+
+// route for average value show on web page
+Route::get('avg',[AggregateController::class,'avgOperation']);
+
+/*
+|--------------------------------------------------------------------------------------
+*/
