@@ -66,5 +66,67 @@ ii)Syntax: php artisan migrate<br>
 	</ol>
 	All these method we can use with form and we must have to use with API.
 </div><br><hr><br>
+<div class="container">
+	<h1 style="text-align:center">CRUD Query in Laravel</h1>
+	<ul>
+		<h3><li>Create</li></h3>
+		Before Create first check the database is connected or not for checking the database connection goto to the '.env' file and check it.<br>
+		Then,<br>
+		1) Create View under directory 'resources/view' and create file like 'fileName.blade.php' <br>
+		Example: addmember.blade.php<br><br>
+		2) then make the form inside 'addmember.blade.php' view<br>
+		Example:<br>
+		<code>
+		<'form method="post" action="add"><br>
+		<'input type="text" name="name" placeholder=" enter name "><br>
+		<'input type="email" name="email" placeholder=" enter email id "><br>
+		<'input type="text" name="address" placeholder=" enter address "><br>
+		<'button type="submit">Add Member<'/button><br>
+		</'form><br>
+		</code>
+
+		3) Create Model for view for creating model use syntax on command line<br>
+		Syntax: php artisan make:model medelName<br>
+		Example: php artisan make:model Member<br>
+		if do not want to creted update_on or created_on field in the Models table in data base then use this syntax under Model Class inside the Member.php file<br>
+		Syntax & Example: public $timestamps=false;<br><br>
+
+		4) Create Controller for creating the controller use syntax on command line<br>
+		Syntax: php artisan make:controller controllerName<br>
+		Example: php artisan make:controller MemberController<br>
+		after creating controller<br><br>
+		4.1) import the Http Request<br>
+		Example: use Illuminate\Http\Request;<br><br>
+		4.2)Create and import the Model<br>
+		Example for Import model: use App\Models\Member;<br><br>
+
+		4.3) after importing the Http Request and Model make function inside the Controller Class<br>
+		Example:<br>
+		<code>
+		// creating the function for add member<br>
+	    function addMemberData(Request $req){<br>
+	        $member = new Member;<br>
+	        $member->name = $req->name;<br>
+	        $member->email = $req->email;<br>
+	        $member->address = $req->address;<br>
+	        $member->save();<br>
+	        return redirect('add');<br>
+	    }<br>
+		</code><br>
+
+		5) Make Route for view for making the route goto 'web.php' file<br>
+		Syntax:<br>
+		Route::view('url_for_view','view_name');<br>
+		Route::post('url_for_post',[name_of_Controller::class,'controller_function_name']);<br>
+		Example:<br>
+		Route::view('add','addmember');<br>
+		Route::post('add',[MemberController::class,'addMemberData']);<br><br>
+
+		6) it's over laravel will automatically find the table of Member in database and insert the value insde table with the help of Member Model and make sure inside database there is Members Table Available if not available then create and make require feilds in the table.<br>
+		<h3><li>Read</li></h3>
+		<h3><li>Update</li></h3>
+		<h3><li>Delete</li></h3>
+	</ul>
+</div>
 </body>
 </html>
