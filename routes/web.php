@@ -128,3 +128,6 @@ Route::get('insert_data',[MemberQueryBuilder::class,'insertMember']);
 
 // creating route for update the particular data in the table inside the database
 Route::get('update_data',[MemberQueryBuilder::class,'updateMember']);
+
+// creating route for delte the particular data in the table inside the database
+Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);

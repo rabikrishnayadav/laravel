@@ -46,4 +46,10 @@ class MemberQueryBuilder extends Controller
             'address'=>'janakpur'
         ]);
     }
+
+    // crating the function for delete the particular data id=9 in the table inside the database
+    function deleteMember(){
+        return DB::table('members')
+        ->where('id',9)->delete();
+    }
 }

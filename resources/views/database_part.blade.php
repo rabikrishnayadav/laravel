@@ -355,8 +355,8 @@ Example:<br>
 <code>
 	// crating the function for for update the particular data in the table inside the database<br>
     function updateMember(){<br>
-        return DB::table('members')
-        	->where('id',7)
+        return DB::table('members')<br>
+        	->where('id',7)<br>
         	->update([<br>
             'name'=>'Rabi Kr Yadav',<br>
             'email'=>'rabi@email.com',<br>
@@ -368,6 +368,26 @@ Make route for insert the member data in table data<br>
 Example:<br>
 // creating route for for update the particular data in the table inside the database<br>
 Route::get('update_data',[MemberQueryBuilder::class,'updateMember']);<br>
+<br>
+<hr>
+<br>
+<!------------------------------------------------------------------------------------- -->
+<h2>Delete Query</h2>
+For Delete the data inside the table in database.<br>
+Just Make Function like this in existing Controller file<br>
+Example:<br>
+<code>
+	// crating the function for for delete the particular data where id=9 in the table inside the database<br>
+    function deleteMember(){<br>
+        return DB::table('members')<br>
+        	->where('id',9)<br>
+        	->delete();<br>
+    }<br>
+</code>
+Make route for delete the member in table data<br>
+Example:<br>
+// creating route for for delete the particular data in the table inside the database<br>
+Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 </body>
 </html>
