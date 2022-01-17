@@ -16,4 +16,11 @@ class MemberController extends Controller
         $member->save();
         return redirect('add');
     }
+
+    // creating the function for show the member list
+
+    function showMemberData(Request $request){
+        $data =  Member::all();
+        return view('show_member',['members'=>$data]);
+    }
 }

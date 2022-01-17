@@ -122,8 +122,41 @@ ii)Syntax: php artisan migrate<br>
 		Route::view('add','addmember');<br>
 		Route::post('add',[MemberController::class,'addMemberData']);<br><br>
 
-		6) it's over laravel will automatically find the table of Member in database and insert the value insde table with the help of Member Model and make sure inside database there is Members Table Available if not available then create and make require feilds in the table.<br>
+		6) it's over laravel will automatically find the table of Member in database and insert the value insde table with the help of Member Model and make sure inside database there is Members Table Available if not available then create and make require feilds in the table.<br><br>
+		
 		<h3><li>Read</li></h3>
+		For Read(retrive) the data from the database.<br>
+		1) Create View inside the 'resourses/view' folder.<br>
+		Example: show_member.blade.php<br><br>
+		after creating the view just make a table inside the view make feild like id,name,email and address<br>
+		
+		2) Create Model.<br>
+		Example: php artisan make:model Member<br><br>
+
+		3) Create Controller for creating the controller use syntax on command line<br>
+		Syntax: php artisan make:controller controllerName<br>
+		Example: php artisan make:controller MemberController<br>
+		after creating controller<br><br>
+		3.1) import the Http Request<br>
+		Example: use Illuminate\Http\Request;<br><br>
+		3.2) Import the Model<br>
+		Example: use App\Models\Member;<br><br>
+
+		3.3) after importing the Http Request and Model make function inside the Controller Class<br>
+		Example:<br>
+		<code>
+			// creating the function for show the member list<br>
+		    function showMemberData(Request $request){<br>
+		       $data =  Member::all();<br>
+		       return view('show_member',['members'=>$data]);<br>
+		    }<br>
+		</code><br>
+		4) Make Route for show the member list<br>
+		Example:<br>
+		// creating route for show the member from database<br>
+		Route::view('member_list','show_member');<br>
+		Route::get('list',[MemberController::class,'showMemberData']);<br>
+
 		<h3><li>Update</li></h3>
 		<h3><li>Delete</li></h3>
 	</ul>

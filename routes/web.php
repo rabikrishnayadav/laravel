@@ -88,3 +88,6 @@ Route::view('userdataapi','userdata_api');
 // creating route for addmember into database
 Route::view('add','addmember');
 Route::post('add',[MemberController::class,'addMemberData']);
+
+// creating route for show the member from database
+Route::get('member_list',[MemberController::class,'showMemberData']);
