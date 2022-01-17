@@ -295,10 +295,27 @@ ii)Syntax: php artisan migrate<br>
 Example:<br>
 <code>
 	// create function for show the member list which is available in database<br>
-    function findMember(){<br>
+    function whereMember(){<br>
        return DB::table('members')<br>
        ->where('id',4)<br>
        ->get();<br>
+    }<br>
+</code>
+2) Make route for show the list data<br>
+Example:<br>
+// creating route for find member with query builder<br>
+Route::get('find_list',[MemberQueryBuilder::class,'whereMember']);<br>
+
+<br>
+<!------------------------------------------------------------------------------------- -->
+
+<h3>find Keyword Uses</h3>
+1) goto the controller which is made before and then make another function.<br>
+Example:<br>
+<code>
+	// create function for find the specific id member with find(6) in database<br>
+    function findMember(){<br>
+       return (array)DB::table('members')->find(6);<br>
     }<br>
 </code>
 2) Make route for show the list data<br>
