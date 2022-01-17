@@ -155,9 +155,62 @@ ii)Syntax: php artisan migrate<br>
 		Example:<br>
 		// creating route for show the member from database<br>
 		Route::view('member_list','show_member');<br>
-		Route::get('list',[MemberController::class,'showMemberData']);<br>
+		Route::get('list',[MemberController::class,'showMemberData']);<br><br>
 
 		<h3><li>Update</li></h3>
+
+		For Update the data in the database.<br>
+		1) Create View inside the 'resourses/view' folder.<br>
+		Example: update_member.blade.php<br><br>
+
+		1.1) then make the form inside 'addmember.blade.php' view<br>
+		Example:<br>
+		<code>
+		<'form method="post" action="update"><br>
+		<'input type="hidden" name="id" value=""><br>
+		<'input type="text" name="name" placeholder=" enter name "><br>
+		<'input type="email" name="email" placeholder=" enter email id "><br>
+		<'input type="text" name="address" placeholder=" enter address "><br>
+		<'button type="submit">Update Member<'/button><br>
+		</'form><br>
+		</code>
+		
+		2) Create Model.<br>
+		Example: php artisan make:model Member<br><br>
+
+		3) Create Controller for creating the controller use syntax on command line<br>
+		Syntax: php artisan make:controller controllerName<br>
+		Example: php artisan make:controller MemberController<br>
+		after creating controller<br><br>
+		3.1) import the Http Request<br>
+		Example: use Illuminate\Http\Request;<br><br>
+		3.2) Import the Model<br>
+		Example: use App\Models\Member;<br><br>
+
+		3.3) after importing the Http Request and Model then make function inside the Controller Class<br>
+		Example:<br>
+		<code>
+			// creating the function for update the member list<br>
+  		  	function showForUpdateMemberData($id){<br>
+	        $data =  Member::find($id);<br>
+	        return view('update_member',['member_data'=>$data]);<br>
+	 	   }<br>
+	    // creating the function for update the exact id data<br>
+	    function UpdateMemberData(Request $req){<br>
+	    $member = Member::find($req->id);<br>
+        $member->name = $req->name;<br>
+        $member->email = $req->email;<br>
+        $member->address = $req->address;<br>
+        $member->save();<br>
+        return redirect('member_list');<br>
+    	}<br>
+		</code><br>
+		4) Make Route for show the member list<br>
+		Example:<br>
+		// creating the route for update the member data<br>
+		Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);<br>
+		Route::post('update',[MemberController::class,'UpdateMemberData']);<br><br>
+		
 		<h3><li>Delete</li></h3>
 	</ul>
 </div>

@@ -18,9 +18,24 @@ class MemberController extends Controller
     }
 
     // creating the function for show the member list
-
     function showMemberData(Request $request){
         $data =  Member::paginate(5);
         return view('show_member',['members'=>$data]);
+    }
+
+    // creating the function for update the member list
+    function showForUpdateMemberData($id){
+        $data =  Member::find($id);
+        return view('update_member',['member_data'=>$data]);
+    }
+
+    // creating the function for update the exact id data
+    function UpdateMemberData(Request $req){
+        $member = Member::find($req->id);
+        $member->name = $req->name;
+        $member->email = $req->email;
+        $member->address = $req->address;
+        $member->save();
+        return redirect('member_list');
     }
 }

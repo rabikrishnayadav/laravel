@@ -91,3 +91,7 @@ Route::post('add',[MemberController::class,'addMemberData']);
 
 // creating route for show the member from database
 Route::get('member_list',[MemberController::class,'showMemberData']);
+
+// creating the route for update the member data
+Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);
+Route::post('update',[MemberController::class,'UpdateMemberData']);
