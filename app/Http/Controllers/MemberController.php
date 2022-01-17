@@ -38,4 +38,11 @@ class MemberController extends Controller
         $member->save();
         return redirect('member_list');
     }
+
+    // crating the function for delete the member from list
+    function deleteMemberData($id){
+        $data = Member::find($id);
+        $data->delete();
+        return redirect('member_list');
+    }
 }

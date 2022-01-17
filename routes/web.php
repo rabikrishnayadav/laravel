@@ -95,3 +95,6 @@ Route::get('member_list',[MemberController::class,'showMemberData']);
 // creating the route for update the member data
 Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);
 Route::post('update',[MemberController::class,'UpdateMemberData']);
+
+// creating the route for delete the member
+Route::get('delete/{id}',[MemberController::class,'deleteMemberData']);

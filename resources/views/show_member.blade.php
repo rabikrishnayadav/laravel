@@ -19,7 +19,8 @@
 		<td>{{$info['email']}}</td>
 		<td>{{$info['address']}}</td>
 		<td>
-			<a href=" {{'update/'.$info['id']}} " >Update</a>
+			<a href=" {{'update/'.$info['id']}} " >Update</a>&nbsp;&nbsp;&nbsp;
+			<a href=" {{'delete/'.$info['id']}} " >Delete</a>
 		</td>
 	</tr>
 	@endforeach

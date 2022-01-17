@@ -210,9 +210,36 @@ ii)Syntax: php artisan migrate<br>
 		// creating the route for update the member data<br>
 		Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);<br>
 		Route::post('update',[MemberController::class,'UpdateMemberData']);<br><br>
-		
+
 		<h3><li>Delete</li></h3>
+		For Delete the data form the data base do the following steps.<br>
+		1) Create Model.<br>
+		Example: php artisan make:model Member<br><br>
+
+		2) Create Controller for creating the controller use syntax on command line<br>
+		Syntax: php artisan make:controller controllerName<br>
+		Example: php artisan make:controller MemberController<br>
+		after creating controller<br><br>
+		2.1) import the Http Request<br>
+		Example: use Illuminate\Http\Request;<br><br>
+		2.2) Import the Model<br>
+		Example: use App\Models\Member;<br><br>
+
+		2.3) after importing the Http Request and Model then make function inside the Controller Class<br>
+		Example:<br>
+		<code>
+			// crating the function for delete the member from list<br>
+		    function deleteMemberData($id){<br>
+		        $data = Member::find($id);<br>
+		        $data->delete();<br>
+		        return redirect('member_list');<br>
+		    }<br>
+		</code><br>
+		3) Make Route for delete the member list<br>
+		Example:<br>
+		// creating the route for update the member data<br>
+		Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);<br>
 	</ul>
-</div>
+</div><br><hr><br>
 </body>
 </html>
