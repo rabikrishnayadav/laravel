@@ -20,7 +20,7 @@ class MemberController extends Controller
     // creating the function for show the member list
 
     function showMemberData(Request $request){
-        $data =  Member::all();
+        $data =  Member::paginate(5);
         return view('show_member',['members'=>$data]);
     }
 }

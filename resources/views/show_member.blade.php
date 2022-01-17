@@ -1,3 +1,8 @@
+<style type="text/css">
+	.w-5{
+		display: none;
+	}
+</style>
 <h1 style="text-align:center">Member List</h1>
 <table border="1px" cellpadding="10px">
 	<tr>
@@ -15,3 +20,6 @@
 	</tr>
 	@endforeach
 </table>
+<div>
+	{{$members->links()}}
+</div>
