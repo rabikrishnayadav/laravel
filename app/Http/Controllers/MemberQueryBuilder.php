@@ -35,4 +35,15 @@ class MemberQueryBuilder extends Controller
             'address'=>'janakpur'
         ]);
     }
+
+    // crating the function for update the particular data in the table inside the database
+    function updateMember(){
+        return DB::table('members')
+        ->where('id',7)
+        ->update([
+            'name'=>'Rabi Kr Yadav',
+            'email'=>'rabi@email.com',
+            'address'=>'janakpur'
+        ]);
+    }
 }

@@ -323,8 +323,8 @@ Example:<br>
 // creating route for find member with query builder<br>
 Route::get('find_list',[MemberQueryBuilder::class,'findMember']);<br>
 <br>
-	<hr>
-	<br>
+<hr>
+<br>
 <!------------------------------------------------------------------------------------- -->
 <h2>Insert Query</h2>
 For insert the value inside the table in database.<br>
@@ -344,6 +344,30 @@ Make route for insert the member data in table data<br>
 Example:<br>
 // creating route for insert data into table with query builder<br>
 Route::get('insert_data',[MemberQueryBuilder::class,'insertMember']);<br>
+<br>
+<hr>
+<br>
+<!------------------------------------------------------------------------------------- -->
+<h2>update Query</h2>
+For update the value inside the table in database.<br>
+Just Make Function like this in existing Controller file<br>
+Example:<br>
+<code>
+	// crating the function for for update the particular data in the table inside the database<br>
+    function updateMember(){<br>
+        return DB::table('members')
+        	->where('id',7)
+        	->update([<br>
+            'name'=>'Rabi Kr Yadav',<br>
+            'email'=>'rabi@email.com',<br>
+            'address'=>'janakpur'<br>
+        ]);<br>
+    }<br>
+</code>
+Make route for insert the member data in table data<br>
+Example:<br>
+// creating route for for update the particular data in the table inside the database<br>
+Route::get('update_data',[MemberQueryBuilder::class,'updateMember']);<br>
 </div><br><hr><br>
 </body>
 </html>
