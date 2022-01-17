@@ -26,4 +26,13 @@ class MemberQueryBuilder extends Controller
     function findMember(){
        return (array)DB::table('members')->find(6);
     }
+
+    // crating the function for insert the data into the table in database
+    function insertMember(){
+        return DB::table('members')->insert([
+            'name'=>'Rabi Kr Yadav',
+            'email'=>'rabi@email.com',
+            'address'=>'janakpur'
+        ]);
+    }
 }

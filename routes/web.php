@@ -122,3 +122,6 @@ Route::get('where_list',[MemberQueryBuilder::class,'whereMember']);
 
 // creating route for find member with query builder
 Route::get('find_list',[MemberQueryBuilder::class,'findMember']);
+
+// creating route for insert data into table with query builder
+Route::get('insert_data',[MemberQueryBuilder::class,'insertMember']);

@@ -322,6 +322,28 @@ Example:<br>
 Example:<br>
 // creating route for find member with query builder<br>
 Route::get('find_list',[MemberQueryBuilder::class,'findMember']);<br>
+<br>
+	<hr>
+	<br>
+<!------------------------------------------------------------------------------------- -->
+<h2>Insert Query</h2>
+For insert the value inside the table in database.<br>
+Just Make Function like this in existing Controller file<br>
+Example:<br>
+<code>
+	// crating the function for insert the data into the table in database<br>
+    function insertMember(){<br>
+        return DB::table('members')->insert([<br>
+            'name'=>'Rabi Kr Yadav',<br>
+            'email'=>'rabi@email.com',<br>
+            'address'=>'janakpur'<br>
+        ]);<br>
+    }<br>
+</code>
+Make route for insert the member data in table data<br>
+Example:<br>
+// creating route for insert data into table with query builder<br>
+Route::get('insert_data',[MemberQueryBuilder::class,'insertMember']);<br>
 </div><br><hr><br>
 </body>
 </html>
