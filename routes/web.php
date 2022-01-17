@@ -116,3 +116,5 @@ Route::get('delete/{id}',[MemberController::class,'deleteMemberData']);
 
 // creating route for query builder
 Route::get('list',[MemberQueryBuilder::class,'memberList']);
+// creating route for find member with query builder
+Route::get('find_list',[MemberQueryBuilder::class,'findMember']);

@@ -279,9 +279,32 @@ ii)Syntax: php artisan migrate<br>
 			</'table>
 		</code>
 	3) Make the Route for show the member list.<br>
+	before making route just import the Controller in web.php file<br>
 	Example:<br>
+	// importing the memberQueryBuilder controller<br>
+	use App\Http\Controllers\MemberQueryBuilder;<br>
 	// creating route for query builder<br>
 	Route::get('list',[MemberQueryBuilder::class,'memberList']);<br>
+	<br>
+	<hr>
+	<br>
+<!------------------------------------------------------------------------------------- -->
+
+<h3>Where Clause Uses</h3>
+1) goto the controller which is made before and then make another function.<br>
+Example:<br>
+<code>
+	// create function for show the member list which is available in database<br>
+    function findMember(){<br>
+       return DB::table('members')<br>
+       ->where('id',4)<br>
+       ->get();<br>
+    }<br>
+</code>
+2) Make route for show the list data<br>
+Example:<br>
+// creating route for find member with query builder<br>
+Route::get('find_list',[MemberQueryBuilder::class,'findMember']);<br>
 </div><br><hr><br>
 </body>
 </html>

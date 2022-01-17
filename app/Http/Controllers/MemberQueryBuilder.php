@@ -14,4 +14,11 @@ class MemberQueryBuilder extends Controller
         $data = DB::table('members')->get();
         return view('list',['data'=>$data]);
     }
+
+    // create function for show the member list which is available in database
+    function findMember(){
+       return DB::table('members')
+       ->where('id',4)
+       ->get();
+    }
 }
