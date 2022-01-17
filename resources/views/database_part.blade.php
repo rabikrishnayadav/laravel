@@ -241,5 +241,47 @@ ii)Syntax: php artisan migrate<br>
 		Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);<br>
 	</ul>
 </div><br><hr><br>
+<div class="container">
+	<h1 style="text-align:center">Query Builder</h1>
+	Here we are connecting with the database without Creating the Member.<br>
+	Before starting first check database is connected or not for check open the '.env' file and check it.<br>
+	1) Create a new Controller or also we can use old controller<br>
+	For create new controller write syntax on terminal<br>
+	Syntax: php artisan make:controller controllerName<br>
+	Example: php artisan make:controller MemberQueryBuilder<br>
+	1.1) after creating controller then import database class<br>
+	Example:<br>
+	// importing the databse file<br>
+	use Illuminate\Support\Facades\DB;<br>
+	1.1.1) make function inside the MemberQueryBuilder Class<br>
+	Example:<br>
+	<code>
+		// create function for show the member list which is available in database<br>
+		 function memberList(){<br>
+        $data = DB::table('members')->get();<br>
+        return view('list',['data'=>$data]);<br>
+    	}<br>
+	</code><br>
+
+	2) Create View inside the 'resourses/view' folder.<br>
+		Example: list.blade.php<br><br>
+
+	2.1) then make the tabele inside 'list.blade.php' view<br>
+		Example:<br>
+		<code>
+			<'table border="1px" cellpadding="10px"><br>
+				<'tr><br>
+					<'th>IDs</'th><br>
+					<'th>Name</'th><br>
+					<'th>Email</'th><br>
+					<'th>Address</'th><br>
+				</'tr><br>
+			</'table>
+		</code>
+	3) Make the Route for show the member list.<br>
+	Example:<br>
+	// creating route for query builder<br>
+	Route::get('list',[MemberQueryBuilder::class,'memberList']);<br>
+</div><br><hr><br>
 </body>
 </html>

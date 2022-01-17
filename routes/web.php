@@ -8,6 +8,9 @@ use App\Http\Controllers\UserController;
 // importing the member controller
 use App\Http\Controllers\MemberController;
 
+// importing the memberQueryBuilder controller
+use App\Http\Controllers\MemberQueryBuilder;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +77,12 @@ Route::group(['middleware'=>['protectPage']],function(){
 Route::get('user-data',[UserController::class,'usersfun']);    
 });
 
+/*
+|--------------------------------------------------------------------------------------
+|                                Database(CRUD) Operation
+|--------------------------------------------------------------------------------------
+*/
+
 // create route for calling 
 Route::get('db',[UserController::class,'databaseCon']);
 
@@ -98,3 +107,12 @@ Route::post('update',[MemberController::class,'UpdateMemberData']);
 
 // creating the route for delete the member
 Route::get('delete/{id}',[MemberController::class,'deleteMemberData']);
+
+/*
+|--------------------------------------------------------------------------------------
+|                                Query builder
+|--------------------------------------------------------------------------------------
+*/
+
+// creating route for query builder
+Route::get('list',[MemberQueryBuilder::class,'memberList']);
