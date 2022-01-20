@@ -526,5 +526,19 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2>Stub</h2>
+	it is a skeltan file<br>
+	It is used for pre-written(by default) things in file which will create at command line like we create model,controller,view,component etc.<br><br>
+
+	For use the stub we have to publish stub<br>
+	Example: php artisan stub:publish<br><br>
+
+	After publish stub there is one folder is created in project file name is 'stubs' and inside that file there is pre-defined stubs for many thins.<br>
+
+	Now open the file which want to make some change then save that file.
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
