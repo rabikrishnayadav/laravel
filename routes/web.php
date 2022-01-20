@@ -14,6 +14,8 @@ use App\Http\Controllers\MemberQueryBuilder;
 // importing the aggregate controller
 use App\Http\Controllers\AggregateController;
 
+// importing the employee Controller
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -155,3 +157,6 @@ Route::get('avg',[AggregateController::class,'avgOperation']);
 /*
 |--------------------------------------------------------------------------------------
 */
+
+// making path for employee data
+Route::get("employee",[EmployeeController::class,"getEmployeeData"]);

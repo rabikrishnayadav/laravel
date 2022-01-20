@@ -388,7 +388,9 @@ Make route for delete the member in table data<br>
 Example:<br>
 // creating route for for delete the particular data in the table inside the database<br>
 Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
-</div><br><hr><br>
+</div><br><hr>
+<!------------------------------------------------------------------------------------- -->
+<br>
 <div class="container">
 	<h1 style="text-align:center">Aggregate Method</h1>
 	It has a database functions which perform mathmatical Calculation<br>
@@ -421,5 +423,30 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 	    Route::get('avg',[AggregateController::class,'avgOperation']);<br>
 	</ul>
 </div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
+<div class="container">
+	<h2>Join in Laravel</h2>
+	Join key word is used for fetch data from two different table.<br>
+	Steps<br>
+	1) Create Controller E.g. php artisan make:controller EmpolyeeController<br>
+	2) make Route for controller and path where data will show<br>
+	Example:<br>
+	// making path for employee data<br>
+	Route::get("employee",[EmployeeController::class,"getEmployeeData"]);<br>
+	3) create function inside EmployeeController class for join or other.<br>
+	Example:<br>
+	<code>
+		function getEmployeeData(){<br>
+        return DB::table('employee')<br>
+        ->join('company','employee.id', '=', 'company.employee_id')<br>
+        ->select('company.*','employee.*') // this is for validation it is not require for only join<br>
+        ->where('employee.name','Rabi')   // this is for filter data it is also not require for only join<br>
+        ->get();<br>
+    }<br>
+	</code>
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
