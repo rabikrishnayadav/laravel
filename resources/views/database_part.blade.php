@@ -495,5 +495,36 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2 style="text-align:center">Seeding</h2>
+	This is used for insert the dummy data in database.<br>
+	For Creating Seeding File.<br>
+	Syntax: php artisan make:seeder fileName<br>
+	Example: php artisan make:seeder MembersSeeder<br>
+	For Checking file is created or not goto dir 'database/seedres' and find file name which is created.<br>
+	After creating the seeder file then open it and import DB file<br>
+	Example:<br>
+	//importing the db file<br>
+	use Illuminate\Support\Facades\DB;<br>
+	// importing the Str file<br>
+	use Illuminate\Support\Str;<br><br>
+	Afeter importing these file then create function for inserting dummy data in database inside MembersSeeder Class<br>
+	Example:<br>
+	<code>
+		public function run() {<br>
+        // function for inserting the dummy data in database inside members table<br>
+        DB::table('members')->insert([<br>
+            'name'=>Str::random(5),<br>
+            'email'=>Str::random(3).'@gmail.com',<br>
+            'address'=>Str::random(10)<br>
+        ]);<br>
+    }<br>
+	</code><br>
+	Now after making function run command for inserting the data in database.<br>
+	Syntax: php artisan db:seed --class=className<br>
+	Example: php artisan db:seed --class=MembersSeeder<br> this will insert one data in table at single time command line execute.
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
