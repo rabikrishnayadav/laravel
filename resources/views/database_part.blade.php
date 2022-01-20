@@ -448,5 +448,52 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2 style="text-align:center">Migration</h2>
+	It is used for create table in database with the single command<br>
+	before using migration command must be check '.env' file there is database connected or not<br>
+	i) Command for create table in database though migration<br>
+	Syntax: php artisan make:migration create_tableName_table<br>
+	Example: php artisan make:migration create_test_table<br><br>
+	For see migration file is created or not goto dir 'database/migrations' and find file name which is created.<br>
+	After created migration file successfully then inside that file there is two function is created one 'function up()' another 'function down()'<br>
+	a) function up(): when this function will run then table will create in database<br>
+	inside this function we can add many feilds in table as requirement.<br>
+	Example:<br>
+	<code>
+		public function up() {<br>
+        Schema::create('test', function (Blueprint $table) {<br>
+            $table->id();<br>
+            $table->string('name');<br>
+            $table->string('email');<br>
+            $table->timestamps();<br>
+        });<br>
+    }<br>
+	</code>
+	b) function down(): when this function will run then table will delete from the database<br>
+	Final Command run For Creating tables in database<br>
+	<strong>Syntax: php artisan migrate</strong><br>
+	When this command run then it will create all the table in database which migration file is created<br><br>
+	<ul>
+		<b>Some Important Migration Command</b>
+		<li>php artisan make:migration create_tableName_table</li>
+		This command is used create a new Migration file for crating table in database
+		<li>php artisan migrate</li>
+		This command is used for created the table in database which migration file is available inside 'database/migration' folder
+		<li>php artisan migrate:reset</li>
+		This command is used for delete all the table in database which is created through migration command.
+		<li>php artisan migrate:rollback</li>
+		This command is used for delete all the table in database which is only created at the last migration time<br>
+		<li>php artisan migrate:rollback --step 2</li>
+		This command is used for delete the table form last migration as a requirement quantity
+		<li>php artisan migrate:refresh</li>
+		This command is used when once migration is run then any changes happen in the migration file then again we have to refresh that table in database.<br>
+		When this command will run then it will delete old table in database and create again new table in database.
+		<li>php artisan migrate --path=/database/migrations/2022_01_20_144924_create_test_table.php</li>
+		This command is used for migrate the only one(or particular) file for create only one table in database.
+	</ul>
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
