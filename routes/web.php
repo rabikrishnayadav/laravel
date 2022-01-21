@@ -16,6 +16,9 @@ use App\Http\Controllers\AggregateController;
 
 // importing the employee Controller
 use App\Http\Controllers\EmployeeController;
+
+// importing the device controller
+use App\Http\Controllers\DeviceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -165,3 +168,7 @@ Route::get("employee",[EmployeeController::class,"getEmployeeData"]);
 // route for relation data show path
 Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);
 Route::get("one_to_many_relation",[EmployeeController::class,"onetoMany"]);
+
+
+// route for model binding
+Route::get('device/{key:name}',[DeviceController::class,"deviceIndex"]);

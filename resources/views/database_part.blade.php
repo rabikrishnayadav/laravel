@@ -654,6 +654,31 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 	echo $result;
 
 	?>
+	<br><br><br>
+	<h2>Route Model Binding</h2>
+	<p>
+		This is using for retrive the data from database in shorten way.<br>
+		Example:<br>
+		1) Create One Model<br>
+		E.g: php artisan make:model Device<br>
+		2) Create One Controller<br>
+		E.g: php artisan make:Controller DeviceController<br>
+		2.1) Import the Device model in Controller<br>
+		E.g: use App\Models\Device;<br>
+		2.2) Make Function in DeviceController Class<br>
+		<code>
+			function deviceIndex(Device $key){<br>
+        	return $key->all();<br>
+    		}<br>
+		</code>
+		3) import DeviceController in 'web.php' file for route<br>
+		E.g: use App\Http\Controllers\DeviceController;<br>
+		3.1) make Route for show the result on webpage<br>
+		E.g: use App\Http\Controllers\DeviceController;<br>
+		4) It's Done. Now goto the urlbar and find the query with device name<br>
+		E.g: http://127.0.0.1:8000/device/laptop<code></code>
+	</p>
+
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
