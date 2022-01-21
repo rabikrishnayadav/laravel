@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 // importing the models
 use App\Models\Company;
 use App\Models\Employee;
-
+use App\Models\Device;
 class EmployeeController extends Controller
 {
     //
@@ -25,5 +25,10 @@ class EmployeeController extends Controller
     // function for one to one relation
     function onetoOne(){
         return Employee::find(2)->one_to_one_companyData;
+    }
+
+    // function for one to many relation
+    function onetoMany(){
+        return Employee::find(2)->one_to_many_Data;
     }
 }

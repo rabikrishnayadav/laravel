@@ -164,3 +164,4 @@ Route::get("employee",[EmployeeController::class,"getEmployeeData"]);
 
 // route for relation data show path
 Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);
+Route::get("one_to_many_relation",[EmployeeController::class,"onetoMany"]);

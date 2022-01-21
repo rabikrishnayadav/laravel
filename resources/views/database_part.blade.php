@@ -595,6 +595,7 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 		// importing the models<br>
 	use App\Models\Company;<br>
 	use App\Models\Employee;<br>
+	use App\Models\Device;<br>
 	</code><br>
 	Basically there are four type of relationship<br>
 	<ol>
@@ -617,6 +618,20 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 		iii)Make Route in 'web.php' for showing the result<br>
 		Example:Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);<br>
 		<li>One to Many</li>
+		This will match and find from first table only one record and from second table many record which has any relatiohship form first table.<br>
+		For Example:<br>
+		i) Crate function in Company Model<br>
+		<code>
+			function one_to_many_Data(){<br>
+        return $this->hasMany('App\Models\Device'); // this line will make one to many relation<br>
+    	}<br>
+		</code>
+		ii) Crate function in EmployeeController<br>
+		<code>
+			function onetoMany(){<br>
+       	 return Employee::find(2)->one_to_many_Data;<br>
+  		  }<br>
+		</code>
 		<li>Many to One</li>
 		<li>Many to Many</li>
 	</ol>

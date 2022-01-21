@@ -14,4 +14,8 @@ class Employee extends Model
     function one_to_one_companyData(){
         return $this->hasOne('App\Models\Company'); // this line will make one to one relation 
     }
+
+    function one_to_many_Data(){
+        return $this->hasMany('App\Models\Device'); // this line will make one to many relation
+    }
 }
