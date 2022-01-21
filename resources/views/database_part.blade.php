@@ -540,5 +540,42 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2 style="text-align:center">Accessor & Mutator</h2>
+	<ol>
+		<li>Accessor</li>
+		It's uses when we have to show data from database into the browser with modification but not modified in database.<br>
+		All Accessor are used in model file.<br>
+		Example:<br>
+		<code>
+			class Member extends Model {<br>
+			    use HasFactory;<br>
+			    function getNameAttribute($value){<br>
+			        return ucfirst($value);  // for display First letter capital in browser<br>
+			    }<br>
+			    function getAddressAttribute($value){<br>
+			        return $value.",Nepal";  // for display in address attached with nepal<br>
+			    }<br>
+			}<br>
+
+		</code> 
+		<li>Mutator</li>
+		It's uses when we are inserting the data into the database at that time we can add some extra data in database. which is not comming dirctly from the front-end.<br>
+		It's directly mean we can modify the data before the save data into database.<br>
+		All Mutator are used in model file.<br>
+		Example:<br>
+		<code>
+			// function for save extra data in database<br>
+		    public function setNameAttribute($value){<br>
+		        return $this->attributes['name']= 'Mr.'.$value;<br>
+		    }<br>
+		    public function setAddressAttribute($value){<br>
+		        return $this->attributes['address']= $value.',Janakpur Nepal';<br>
+		    }<br>
+		</code>
+	</ol>
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
