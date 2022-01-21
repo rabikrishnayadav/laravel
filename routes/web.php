@@ -160,3 +160,7 @@ Route::get('avg',[AggregateController::class,'avgOperation']);
 
 // making path for employee data
 Route::get("employee",[EmployeeController::class,"getEmployeeData"]);
+
+
+// route for relation data show path
+Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);

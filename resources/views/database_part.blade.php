@@ -577,5 +577,51 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2 style="text-align:center">Relations</h2>
+	Relation is used when we have to (get)show data from two or more than two table in same database or other behalf of any relationship like ids or name etc.<br>
+	
+	For Relation Create two Models<br>
+	Example:<br>
+	<code>
+		i) 	php artisan make:model Employee<br>
+		ii)	php artisan make:model Company<br>
+	</code>
+	After Creating Company Create One Controller<br>
+	Example: php artisan make:controller EmployeeController<br>
+	After creating Controller import the models<br>
+	Example:<br>
+	<code>
+		// importing the models<br>
+	use App\Models\Company;<br>
+	use App\Models\Employee;<br>
+	</code><br>
+	Basically there are four type of relationship<br>
+	<ol>
+		<li>One to One</li>
+		This will match and find only one data from both table which will mached first.<br>
+		Then Make route for showing the data in browser.<br>
+		For Example:<br>
+		i) Create function in Company Model<br>
+		<code>
+		function one_to_one_companyData(){<br>
+        return $this->hasOne('App\Models\Company'); // this line will make one to one relation <br>
+    	}<br>
+		</code>
+		ii) create function in EmployeeController<br>
+		<code>
+			function onetoOne(){<br>
+        return Employee::find(1)->one_to_one_companyData;<br>
+    	}<br>
+		</code>
+		iii)Make Route in 'web.php' for showing the result<br>
+		Example:Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);<br>
+		<li>One to Many</li>
+		<li>Many to One</li>
+		<li>Many to Many</li>
+	</ol>
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
