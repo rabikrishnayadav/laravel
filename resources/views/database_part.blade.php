@@ -638,5 +638,24 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
 <br>
+<div class="container">
+	<h2>Fluent String</h2>
+	With The help of Fluent String We Can use many function in single line<br>
+	Example:<br>
+	<?php use Illuminate\Support\Str;
+
+	$info = 'hi, this is the Example of Fluent String';
+
+	$result = Str::of($info)
+	->ucfirst($info)
+	// ->replaceFirst("hi","hello",$info) 
+	->camel($info);
+
+	echo $result;
+
+	?>
+</div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
 </body>
 </html>
