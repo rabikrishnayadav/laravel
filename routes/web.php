@@ -19,6 +19,9 @@ use App\Http\Controllers\EmployeeController;
 
 // importing the device controller
 use App\Http\Controllers\DeviceController;
+
+// importing the mail class
+use App\Mail\SampleMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -172,3 +175,9 @@ Route::get("one_to_many_relation",[EmployeeController::class,"onetoMany"]);
 
 // route for model binding
 Route::get('device/{key:name}',[DeviceController::class,"deviceIndex"]);
+
+
+// route for mail template
+Route::get('/mail',function(){
+    return new SampleMail();
+});
