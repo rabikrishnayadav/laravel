@@ -11,7 +11,7 @@
 
     }
     ul li{
-        float: left;
+        
         padding: 20px;
 
     }   
@@ -29,8 +29,8 @@
 </style>
 <div id="header">
     <ul>
-        <li><a href="/">Welcome part</a></li>
-        <li><a href="/database">Database Part</a></li>
-        <li><a href="/api">API Part</a></li>
+        <li style="float: left;"><a href="/">Welcome part</a></li>
+        <li style="float: left;"><a href="/database">Database Part</a></li>
+        <li style="float: left;"><a href="/api">API Part</a></li>
     </ul>
 </div>
