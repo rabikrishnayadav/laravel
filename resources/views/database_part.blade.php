@@ -705,8 +705,8 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 		});<br>
 	</code>
 	3) For see the result goto url: http://127.0.0.1:8000/mail<br>
-</div><br><hr><br>
+</div><hr>
 <!------------------------------------------------------------------------------------- -->
-<br>
+<h1 style="text-align:center; background:pink;"><br>For Laravel API Part<br><a href="/api">Click here</a><br><br></h1>
 </body>
 </html>

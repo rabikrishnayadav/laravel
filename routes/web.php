@@ -41,6 +41,10 @@ Route::get('/database', function () {
     return view('database_part');    
 });
 
+Route::get('/api', function () {
+    return view('api_part');    
+});
+
 // this route for calling the controller of register page for show on the browser
 Route::post('register',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');
