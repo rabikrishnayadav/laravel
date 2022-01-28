@@ -13,7 +13,7 @@ class DeviceController extends Controller
     }
 
     // creating function for show the devices list with api
-    function deviceList(){
-        return Device::all();
+    function deviceList($id=null){
+        return $id?Device::find($id):Device::all();
     }
 }
