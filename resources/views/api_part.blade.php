@@ -70,11 +70,53 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	</code>
 	3) Make Route for the view data<br>
 	before making route first import controller in api.php file<br>
-	E.g: use App\Http\Controllers\DeviceController;
+	E.g: use App\Http\Controllers\DeviceController;<br>
 	E.g: Route::get('list',[DeviceController::class,'deviceList']);<br>
 	4) It's Over now we can check it on postman and also getMethod data will show on browser<br>
 	E.g: 127.0.0.1:8000/api/list<br><br>
+
 	<h3><li>Post mehtod</li></h3>
+	This method is used for insert(save) the data into database.<br>
+	Example:<br>
+	1) Create a Model<br>
+	E.g: php artisan make mode<br><br>
+	2) Create a Controller<br>
+	E.g: php artisan make:controller DeviceController<br>
+	2.1) import the model and Http class<br>
+	E.g: use Illuminate\Http\Request;<br>
+	E.g: use App\Models\Device;<br>
+	2.2) make method inside DeviceController class for insert data<br>
+	<code>
+		function insertDevice(Request $req){<br>
+        $device = new Device; <br>
+        $device->name = $req->name;<br>
+        $device->employee_id = $req->employee_id;<br>
+        $result = $device->save();<br>
+        if ($result) {<br>
+            return["result"=>"Data has been saved"];<br>
+        }else{<br>
+            return["result"=>"Operation Faild"];<br>
+        }<br>
+    }<br>
+	</code>
+	3) Make Route for the insert data<br>
+	before making route first import controller in api.php file<br>
+	E.g: use App\Http\Controllers\DeviceController;<br>
+	E.g: Route::get('add',[DeviceController::class,'insertDevice']);<br>
+	5) Now goto the postman<br>
+	a) use POST method<br>
+	b) select raw button<br>
+	c) change Text to JSON on Dropdown<br>
+	d) Write the code for insert the value<br>
+	Example:<br>
+	<code>
+		{<br>
+    "name":"Android Device",<br>
+    "employee_id":"3"<br>
+	}<br>
+	</code>
+	After Writing the code use the route link and send it.<br>
+	E.g: 127.0.0.1:8000/api/add<br><br>
 	<h3><li>Put mehtod</li></h3>
 	<h3><li>Delete mehtod</li></h3>
 	<h3><li>Search mehtod</li></h3>

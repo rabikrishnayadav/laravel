@@ -29,3 +29,6 @@ Route::get('data',[dummyApiController::class,'getData']);
 
 // route for get list data with get method
 Route::get('list/{id?}',[DeviceController::class,'deviceList']);
+
+// route for insert data in device with api
+Route::post('add',[DeviceController::class,'insertDevice']);
