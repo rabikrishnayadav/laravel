@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 // importing the dummyapiController
 use App\Http\Controllers\dummyApiController;
 
+// importing the Device Controller
+use App\Http\Controllers\DeviceController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // route for dummy api
 Route::get('data',[dummyApiController::class,'getData']);
+
+// route for get list data with get method
+Route::get('list',[DeviceController::class,'deviceList']);

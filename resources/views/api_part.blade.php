@@ -54,6 +54,26 @@ E.g: Route::get('data',[dummyApiController::class,'getData']);<br>
 Basically there are so many method for crreating the Api Some of them Are.<br>
 <ol>
 	<h3><li>Get mehtod</li></h3>
+	This method is used for getting the data from database.<br>
+	Example:<br>
+	1) Create a Model<br>
+	E.g: php artisan make mode<br><br>
+	2) Create a Controller<br>
+	E.g: php artisan make:controller DeviceController<br>
+	2.1) import the model<br>
+	E.g: use App\Models\Device;<br>
+	2.2) make function inside DeviceController class<br>
+	<code>
+		function deviceList(){<br>
+        return Device::all();<br>
+    }<br>
+	</code>
+	3) Make Route for the view data<br>
+	before making route first import controller in api.php file<br>
+	E.g: use App\Http\Controllers\DeviceController;
+	E.g: Route::get('list',[DeviceController::class,'deviceList']);<br>
+	4) It's Over now we can check it on postman and also getMethod data will show on browser<br>
+	E.g: 127.0.0.1:8000/api/list<br><br>
 	<h3><li>Post mehtod</li></h3>
 	<h3><li>Put mehtod</li></h3>
 	<h3><li>Delete mehtod</li></h3>

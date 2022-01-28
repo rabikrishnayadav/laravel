@@ -11,4 +11,9 @@ class DeviceController extends Controller
     function deviceIndex(Device $key){
         return $key->all();
     }
+
+    // creating function for show the devices list with api
+    function deviceList(){
+        return Device::all();
+    }
 }
