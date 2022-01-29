@@ -9,6 +9,10 @@ use App\Http\Controllers\dummyApiController;
 // importing the Device Controller
 use App\Http\Controllers\DeviceController;
 
+// importing the resource member controller
+use App\Http\Controllers\resourceMemberController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,3 +48,6 @@ Route::get('search/{name}',[DeviceController::class,'searchDevice']);
 
 // route for insert valid data in device table with API
 Route::post('valid',[DeviceController::class,'validData']);
+
+// route for api with resource
+Route::apiResource('member',resourceMemberController::class);

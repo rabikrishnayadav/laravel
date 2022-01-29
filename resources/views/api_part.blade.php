@@ -264,5 +264,37 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	Now send it using created route url<br>
 	E.g: http://127.0.0.1:8000/api/valid<br>
 </div><br><hr><br>
+<div>
+	<h2 style="text-align:center">API with Resource</h2>
+	Resource is used for perform CRUD Operation with single route.<br>
+	When we use resource then it will make for us every CRUD function<br>
+	Example:<br>
+	1) Create Model for it.<br>
+	Syntax: php artisan make:model Member<br>
+	2) Create Controller for it.<br>
+	Syntax: php artisan make:controller resourceMemberController --resource<br>
+	2.1) import the created model in controller<br>
+	E.g: use App\Models\Member;<br>
+	2.2) Now make change inside required methods for perform the task<br>
+	E.g:<br>
+	<code>
+		 public function index()<br>
+    {<br>
+        // this will give all tha member data from database<br>
+        return Member::all();<br>
+    }<br>
+	</code>
+	3) Make route for this.<br>
+	before making route first import the controller in api.php file<br>
+	E.g: use App\Http\Controllers\resourceMemberController;<br>
+	// route for api with resource<br>
+	Route::apiResource('member',resourceMemberController::class);<br>
+	4) its over now check it on postman<br>
+	E.g: http://127.0.0.1:8000/api/member<br>
+</div><br><hr><br>
+<div>
+	<h3>Upload File with API</h3>
+	
+</div>
 </body>
 </html>
