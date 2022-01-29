@@ -53,4 +53,9 @@ class DeviceController extends Controller
             return["result"=>"Operation Faild"];
         }
     }
+
+    // method for search the device with api
+    function searchDevice($name){
+        return Device::where("name","like","%".$name."%")->get();
+    }
 }

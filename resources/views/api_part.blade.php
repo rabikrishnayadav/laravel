@@ -128,7 +128,7 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	2.1) import the model and Http class<br>
 	E.g: use Illuminate\Http\Request;<br>
 	E.g: use App\Models\Device;<br>
-	2.2) make method inside DeviceController class for insert data<br>
+	2.2) make method inside DeviceController class for update data<br>
 	<code>
 		function updateDevice(Request $req){<br>
         $device = Device::($req->id); <br>
@@ -172,7 +172,7 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	2.1) import the model and Http class<br>
 	E.g: use Illuminate\Http\Request;<br>
 	E.g: use App\Models\Device;<br>
-	2.2) make method inside DeviceController class for insert data<br>
+	2.2) make method inside DeviceController class for delete data<br>
 	<code>
 		function deleteDevice($id){<br>
         $device = Device::find($id);<br>
@@ -190,11 +190,35 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	E.g: Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);<br>
 	5) Now goto the postman<br>
 	a) use DELETE method<br>
-	b) select raw button<br>
 	Here we can dirctly delete with url<br>
 	For delete with url write the id in url and send it.<br>
 	E.g:E.g: 127.0.0.1:8000/api/delete/9<br><br>
+
 	<h3><li>Search mehtod</li></h3>
+	Here we can serach the data from database for searching the data first we must have some data for getting the data we have to use GET method.<br>
+	Example:<br>
+	1) Create a Model<br>
+	E.g: php artisan make mode<br><br>
+	2) Create a Controller<br>
+	E.g: php artisan make:controller DeviceController<br>
+	2.1) import the model and Http class<br>
+	E.g: use Illuminate\Http\Request;<br>
+	E.g: use App\Models\Device;<br>
+	2.2) make method inside DeviceController class for search data<br>
+	<code>
+		function searchDevice($name){<br>
+        return Device::where("name","like","%".$name."%")->get();<br>
+    }<br>
+	</code>
+	3) Make Route for the search data<br>
+	before making route first import controller in api.php file<br>
+	E.g: use App\Http\Controllers\DeviceController;<br>
+	E.g: Route::get('search/{name}',[DeviceController::class,'serachDevice']);<br>
+	5) Now goto the postman<br>
+	a) use GET method<br>
+	Here we can dirctly search with url<br>
+	For search with url write the name in url and send it.<br>
+	E.g:E.g: 127.0.0.1:8000/api/search/mac<br><br>
 </ol>
 </body>
 </html>

@@ -38,3 +38,6 @@ Route::put('update',[DeviceController::class,'updateDevice']);
 
 // route for update data in device with api
 Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);
+
+// route for search list data before search data we have to get the data with get method
+Route::get('search/{name}',[DeviceController::class,'searchDevice']);
