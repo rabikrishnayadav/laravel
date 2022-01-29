@@ -29,4 +29,17 @@ class DeviceController extends Controller
             return["result"=>"Operation Faild"];
         }
     }
+
+    // creating method for update data into devices table with api
+    function updateDevice(Request $req){
+        $device = Device::find($req->id);
+        $device->name = $req->name;
+        $device->employee_id = $req->employee_id;
+        $result = $device->save();
+        if ($result) {
+            return["result"=>"Data has been Updated"];
+        }else{
+            return["result"=>"Operation Faild"];
+        }
+    }
 }

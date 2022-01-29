@@ -32,3 +32,6 @@ Route::get('list/{id?}',[DeviceController::class,'deviceList']);
 
 // route for insert data in device with api
 Route::post('add',[DeviceController::class,'insertDevice']);
+
+// route for update data in device with api
+Route::put('update',[DeviceController::class,'updateDevice']);
