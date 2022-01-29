@@ -12,6 +12,14 @@ class RegistrationController extends Controller
 
     function register(Request $getReqData){
 
+        $getReqData->validate(
+            [
+                'username' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|confirmed',
+                'password_confirmation' => 'required'
+            ]
+        );
         echo "<pre>";
         print_r($getReqData->all());
     }
