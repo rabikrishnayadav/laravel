@@ -102,7 +102,7 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	3) Make Route for the insert data<br>
 	before making route first import controller in api.php file<br>
 	E.g: use App\Http\Controllers\DeviceController;<br>
-	E.g: Route::get('add',[DeviceController::class,'insertDevice']);<br>
+	E.g: Route::post('add',[DeviceController::class,'insertDevice']);<br>
 	5) Now goto the postman<br>
 	a) use POST method<br>
 	b) select raw button<br>
@@ -145,7 +145,7 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	3) Make Route for the update data<br>
 	before making route first import controller in api.php file<br>
 	E.g: use App\Http\Controllers\DeviceController;<br>
-	E.g: Route::get('update',[DeviceController::class,'updateDevice']);<br>
+	E.g: Route::put('update',[DeviceController::class,'updateDevice']);<br>
 	5) Now goto the postman<br>
 	a) use PUT method<br>
 	b) select raw button<br>
@@ -161,7 +161,39 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	</code>
 	After Writing the code use the route link and send it.<br>
 	E.g: 127.0.0.1:8000/api/add<br><br>
+
 	<h3><li>Delete mehtod</li></h3>
+	This method is used for delete a record from database table<br>
+	Example:<br>
+	1) Create a Model<br>
+	E.g: php artisan make mode<br><br>
+	2) Create a Controller<br>
+	E.g: php artisan make:controller DeviceController<br>
+	2.1) import the model and Http class<br>
+	E.g: use Illuminate\Http\Request;<br>
+	E.g: use App\Models\Device;<br>
+	2.2) make method inside DeviceController class for insert data<br>
+	<code>
+		function deleteDevice($id){<br>
+        $device = Device::find($id);<br>
+        $result = $device->delete();<br>
+        if ($result) {<br>
+            return["result"=>"Data has been Deleted"];<br>
+        }else{<br>
+            return["result"=>"Operation Faild"];<br>
+        }<br>
+    }<br>
+	</code>
+	3) Make Route for the delete data<br>
+	before making route first import controller in api.php file<br>
+	E.g: use App\Http\Controllers\DeviceController;<br>
+	E.g: Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);<br>
+	5) Now goto the postman<br>
+	a) use DELETE method<br>
+	b) select raw button<br>
+	Here we can dirctly delete with url<br>
+	For delete with url write the id in url and send it.<br>
+	E.g:E.g: 127.0.0.1:8000/api/delete/9<br><br>
 	<h3><li>Search mehtod</li></h3>
 </ol>
 </body>

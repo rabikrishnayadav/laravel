@@ -42,4 +42,15 @@ class DeviceController extends Controller
             return["result"=>"Operation Faild"];
         }
     }
+
+    // creating function for show the devices list with api
+    function deleteDevice($id){
+        $device = Device::find($id);
+        $result = $device->delete();
+        if ($result) {
+            return["result"=>"Data has been Deleted"];
+        }else{
+            return["result"=>"Operation Faild"];
+        }
+    }
 }

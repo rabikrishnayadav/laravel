@@ -35,3 +35,6 @@ Route::post('add',[DeviceController::class,'insertDevice']);
 
 // route for update data in device with api
 Route::put('update',[DeviceController::class,'updateDevice']);
+
+// route for update data in device with api
+Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);
