@@ -293,8 +293,30 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	E.g: http://127.0.0.1:8000/api/member<br>
 </div><br><hr><br>
 <div>
-	<h3>Upload File with API</h3>
-	
-</div>
+	<h2>Upload File with API</h2>
+	here we are uploading the file for api<br>
+	Example:<br>
+	1)Create  controller for it.<br>
+	E.g: php artisan make:controller FileController<br>
+	1.1) making the method for upload file in FileController Class<br>
+	E.g:<br>
+	<code>
+		function fileUpload(Request $req){<br>
+        $result = $req->file('file')->store('apiDocs');<br>
+        return ['result' => $result];<br>
+    }<br>
+	</code>
+	2) Make route for it.<br>
+	Before making route first import file controller in api.php file<br>
+	E.g: use App\Http\Controllers\FileController;<br>
+	E.g: Route::post('upload',[FileController::class,'fileUpload']);<br>
+	3) its done now goto postman<br>
+	a) select POST Method<br>
+	b) select 'form-data' option<br>
+	c) select file<br>
+	d) give key name 'file'<br>
+	e) upload the file and send it.<br>
+	E.g: http://127.0.0.1:8000/api/upload<br>
+</div><br><hr><br>
 </body>
 </html>

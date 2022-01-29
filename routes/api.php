@@ -12,6 +12,8 @@ use App\Http\Controllers\DeviceController;
 // importing the resource member controller
 use App\Http\Controllers\resourceMemberController;
 
+// importing the file controller
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +53,6 @@ Route::post('valid',[DeviceController::class,'validData']);
 
 // route for api with resource
 Route::apiResource('member',resourceMemberController::class);
+
+// route for upload file with api
+Route::post('upload',[FileController::class,'fileUpload']);
