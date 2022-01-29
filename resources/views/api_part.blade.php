@@ -318,5 +318,6 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	e) upload the file and send it.<br>
 	E.g: http://127.0.0.1:8000/api/upload<br>
 </div><br><hr><br>
+<h1 style="text-align:center">Goto Intermediate Level <a href="/intermediate"> click here</a></h1><br>
 </body>
 </html>

@@ -45,6 +45,10 @@ Route::get('/api', function () {
     return view('api_part');    
 });
 
+Route::get('/intermediate', function () {
+    return view('intermediate');    
+});
+
 // this route for calling the controller of register page for show on the browser
 Route::post('register',[UserController::class,'loadRegisterPage']);
 Route::view('registration-page','register');

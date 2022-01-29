@@ -29,8 +29,9 @@
 </style>
 <div id="header">
     <ul>
-        <li style="float: left;"><a href="/">Welcome part</a></li>
+        <li style="float: left;"><a href="/">Beginer part</a></li>
         <li style="float: left;"><a href="/database">Database Part</a></li>
         <li style="float: left;"><a href="/api">API Part</a></li>
+        <li style="float: left;"><a href="/intermediate">Intermediate Part</a></li>
     </ul>
 </div>
