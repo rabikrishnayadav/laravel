@@ -41,3 +41,6 @@ Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);
 
 // route for search list data before search data we have to get the data with get method
 Route::get('search/{name}',[DeviceController::class,'searchDevice']);
+
+// route for insert valid data in device table with API
+Route::post('valid',[DeviceController::class,'validData']);

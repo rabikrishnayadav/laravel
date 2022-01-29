@@ -219,6 +219,50 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	Here we can dirctly search with url<br>
 	For search with url write the name in url and send it.<br>
 	E.g:E.g: 127.0.0.1:8000/api/search/mac<br><br>
-</ol>
+</ol><hr><br>
+<div class="container">
+	<h3 style="text-align:center;">Validator</h3>
+	Example of Validation when data is inserting into database<br>
+	For this we have to make model and controller<br>
+	E.g: php artisan make:model Device<br>
+	E.g: php artisan make:controller DeviceController<br>
+	Then Make Method for validation inside DeviceController Class<br>
+	E.x:<br>
+	<code>
+		public function validData(Request $req){<br>
+        $rules = array(<br>
+            "name" => "required | min:4",<br>
+            "employee_id" => "required | max:2",<br>
+        );<br>
+        $valid_query = Validator::make($req->all(), $rules);<br>
+        if ($valid_query->fails()) {<br>
+            return response()->json($valid_query->errors(),401);<br>
+        }else{<br>
+            $device = new Device; // creating a object of Device<br>
+            $device->name = $req->name;<br>
+            $device->employee_id = $req->employee_id;<br>
+            $result = $device->save();<br>
+            if ($result) {<br>
+                return["result"=>"Data has been saved"];<br>
+            }else{<br>
+                return["result"=>"Operation Faild"];<br>
+            }<br>
+        }<br>
+    }<br>
+	</code>
+	Then make route for it<br>
+	E.g: Route::post('valid',[DeviceController::class,'validData']);<br>
+	After Making Validation goto the postman and use post method<br>
+	write code in json for send the data<br>
+	E.x:<br>
+	<code>
+		{<br>
+    "name":"lg Tv",<br>
+    "employee_id":"4"<br>
+	}<br>
+	</code>
+	Now send it using created route url<br>
+	E.g: http://127.0.0.1:8000/api/valid<br>
+</div><br><hr><br>
 </body>
 </html>
