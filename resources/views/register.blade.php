@@ -14,7 +14,7 @@
 @endif
 <h1 style="text-align:center">Registration Page</h1>
 <div class="container">
-	<form method="post" action="register">
+	<form method="post" action="{{url('/')}}/registered">
 		@csrf
 	<div>
 		<label for="username">Username:</label>

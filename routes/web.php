@@ -1,26 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-// importing the controller
 use App\Http\Controllers\UserController;
-
-// importing the member controller
 use App\Http\Controllers\MemberController;
-
-// importing the memberQueryBuilder controller
 use App\Http\Controllers\MemberQueryBuilder;
-
-// importing the aggregate controller
 use App\Http\Controllers\AggregateController;
-
-// importing the employee Controller
 use App\Http\Controllers\EmployeeController;
-
-// importing the device controller
 use App\Http\Controllers\DeviceController;
-
-// importing the mail class
+use App\Http\Controllers\RegistrationController;
 use App\Mail\SampleMail;
 /*
 |--------------------------------------------------------------------------
@@ -189,3 +176,12 @@ Route::get('device/{key:name}',[DeviceController::class,"deviceIndex"]);
 Route::get('/mail',function(){
     return new SampleMail();
 });
+
+/*
+|--------------------------------------------------------------------------------------
+|                                CRUD Operation Second Time
+|--------------------------------------------------------------------------------------
+*/
+
+Route::get('/register_user',[RegistrationController::class,'index']);
+Route::post('registered',[RegistrationController::class,'register']);
