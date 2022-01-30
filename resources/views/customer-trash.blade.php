@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Trashed Customers</title>
 	<style type="text/css">
 		.div{
 			width: 80%;
@@ -16,10 +16,10 @@
 <body>
 <x-header /><br><br>
 <div class="div">
-	<a href="{{route('customer.trash')}}">
-	<button>View Trash</button>
+	<a href="{{route('customer.view')}}">
+	<button>View Customers</button>
 	</a>
-	<h2 style="text-align:center">Customers Data List</h2>
+	<h2 style="text-align:center">Trashed Customers</h2>
 	<table border="1" cellpadding="10" align="center">
 		<thead>
 			<tr>
@@ -59,8 +59,8 @@
 					Inactive
 					@endif
 				</td>
-				<td><a href="{{route('customer.edit',['id' => $data->id])}}">Update</a></td>
-				<td><a href="{{route('customer.delete',['id' => $data->id])}}">Trash</a></td>
+				<td><a href="{{route('customer.restore',['id' => $data->id])}}">Restore</a></td>
+				<td><a href="{{route('customer.force.delete',['id' => $data->id])}}">Delete</a></td>
 			</tr>
 			@endforeach
 		</tbody>

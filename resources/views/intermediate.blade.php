@@ -118,6 +118,42 @@ if (!function_exists('get_formated_date')) {<br>
 		$request->session()->forget(['key1','key2']);	// for multiple session delete<br>
 		$request->session()-flush();	// for all session delete<br><br>
 	</ol>
+</div><br><hr><br>
+<div class="container">
+	<h2>Soft Delete</h2>
+	Soft Delete is used for temporary delete.<br>
+	If user trash the data then it will goes to temporary delete.<br>
+	If data is deleted temporary then it will be recover(restore) back.<br>
+	If data is deletd permanent then it will not restorable.<br>
+	Example:<br> 
+	1) use Namespace in Model<br>
+	Ex: use Illuminate\Database\Eloquent\SoftDeletes<br>
+	2) Invoking: use SoftDeletes; inside Class of the Model<br>
+	3) Creating a soft delete column in database for add column on existing table use migration<br>
+	Syntax: php artisan make:migration add_deleted_at_to_tableName<br>
+	Ex: php artisan make:migration add_deleted_at_to_customers_table<br>
+	After Creating Migration File then open it.<br>
+	a) make table feilds inside function up()<br>
+	Ex: $table->softDeletes();<br>
+	b) make table drop feilds inside function down()<br>
+	Ex: $table->dropSoftDeletes();<br><br>
+
+	Now run once migration command.<br>
+	Ex: php artisan migrate<br>
+	
+	4) Now make function for soft or hard delete and restore deleted data<br>
+	For all of this laravel has predefined functions and methods they all are.<br>
+	<dl>
+		<dd>i) withTrashed()</dd>
+		This function is used for show both data which is available or temporary deleted data<br><br>
+		<dd>ii) onlyTrashed()</dd>
+		This function is used for show only deleted data<br><br>
+		<dd>iii) restore()</dd>
+		This function is used for restore from temporary deleted.<br><br> 
+		<dd>iv) forceDelete()</dd>
+		This function is used for permanent delete from temporary<br><br>
+	</dl>
+	All Functions Examples are used in Registration Controller<br>
 </div>
 </body>
 </html>

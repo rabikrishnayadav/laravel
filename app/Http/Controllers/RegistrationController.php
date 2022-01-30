@@ -46,6 +46,13 @@ class RegistrationController extends Controller
         return view('viewcustomer')->with($data);
     }
 
+    public function trash(){
+        $customers = Customer::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
+    }
+
+    // Soft (temporary) Delete
     function deleteCustomerData($id){
         $customer = Customer::find($id);
         if (!is_null($customer)) {
@@ -53,6 +60,25 @@ class RegistrationController extends Controller
         }
         return redirect('/customer/view');
     }
+    
+    // Restore temporary Deleted Data
+    function restoreCustomerData($id){
+        $customer = Customer::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->restore();
+        }
+        return redirect('/customer/view');
+    }
+
+    // Permanent Delete from soft(temporary) deleted
+    function deleteCustomer($id){
+        $customer = Customer::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->forceDelete();
+        }
+        return redirect('/customer/view');
+    }
+
     // getting old data
     public function editCustomerData($id){
 

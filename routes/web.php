@@ -186,10 +186,13 @@ Route::get('/mail',function(){
 
 Route::get('/customer',[RegistrationController::class,'index']);
 Route::post('/customers',[RegistrationController::class,'addcustomerData']);
-Route::get('/customer/view',[RegistrationController::class,'viewCustomerData']);
+Route::get('/customer/view',[RegistrationController::class,'viewCustomerData'])->name('customer.view');
 Route::get('/customer/delete/{id}',[RegistrationController::class,'deleteCustomerData'])->name('customer.delete');
 Route::get('/customer/edit/{id}',[RegistrationController::class,'editCustomerData'])->name('customer.edit');
 Route::post('/customer/update/{id}',[RegistrationController::class,'updateCustomerData']);
+Route::get('/customer/trash',[RegistrationController::class,'trash'])->name('customer.trash');
+Route::get('/customer/restore/{id}',[RegistrationController::class,'restoreCustomerData'])->name('customer.restore');
+Route::get('/customer/force-delete/{id}',[RegistrationController::class,'deleteCustomer'])->name('customer.force.delete');
 
 /*
 |--------------------------------------------------------------------------------------
