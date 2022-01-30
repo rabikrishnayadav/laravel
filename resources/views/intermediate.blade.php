@@ -48,6 +48,44 @@
 	</code>
 	4) Its done now we can use command for getting the connected database name<br>
 	Ex: php artisan showDB<br>
+</div><br><hr><br>
+<div class="container">
+	<h2>Custom Helper</h2>
+	If some same code we use many time then for time saving we make helper and there we write once code and (use)execute it many time.<br>
+	Example:<br>
+	1) first create one 'helper.php' file in 'app' directory.<br>
+	2) open 'composer.json' file and register the helper in autoload.<br>
+	Example:<br>
+	<code>
+		"autoload": {<br>
+        "files":[<br>
+            "app/helper.php"<br>
+        ],<br>
+	</code>
+	3) then run one command on cmd for config all project.<br>
+	Syntax: composer dump-autoload<br>
+	4) open the 'helper.php' file which created in 'app' directory and make own functions and methods for use many time.<br>
+	Example 1:<br>
+	<code>
+		// function for print data<br>
+if (!function_exists('print_data')) {<br>
+	function print_data($data){<br>
+		echo "<'pre>";<br>
+		print_r($data);<br>
+		echo "</'pre>";<br>
+	}<br>
+}<br>
+	</code>
+	Example 2:<br>
+	<code>
+		// function for formatted date<br>
+if (!function_exists('get_formated_date')) {<br>
+	function get_formated_date($date, $format){<br>
+		$formattedDate = date($format, strtotime($date));<br>
+		return $formattedDate;<br>
+	}<br>
+}<br>
+	</code>
 </div>
 </body>
 </html>

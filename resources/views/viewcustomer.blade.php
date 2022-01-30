@@ -44,7 +44,7 @@
 					Other
 					@endif
 				</td>
-				<td>{{$data->dob}}</td>
+				<td>{{get_formated_date($data->dob, "d-m-y")}}</td>
 				<td>{{$data->address}}</td>
 				<td>{{$data->state}}</td>
 				<td>{{$data->country}}</td>
