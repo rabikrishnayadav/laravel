@@ -15,7 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name',60);  // here name feilds max character length is 60 will store in db
+            $table->string('user_name',60);  // here name feilds max character length is 60 will store in db
             $table->string('email',100);    // here email feilds max character length is 10 will store in db
             $table->string('password',50);  // here password feilds max character length is 50 will store in db
             $table->enum('gender',['M','F','O'])->nullable();   // M= male , F= female , O= Other

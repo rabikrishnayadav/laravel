@@ -27,7 +27,7 @@ class RegistrationController extends Controller
         );
         
         $customer = new Customer;
-        $customer->name = $getReqData['name'];
+        $customer->user_name = $getReqData['name'];
         $customer->email = $getReqData['email'];
         $customer->password = md5($getReqData['password']);
         $customer->gender = $getReqData['gender'];
@@ -69,7 +69,7 @@ class RegistrationController extends Controller
     // setting new data
     public function updateCustomerData($id, Request $getReqData){
         $customer = Customer::find($id);
-        $customer->name = $getReqData['name'];
+        $customer->user_name = $getReqData['name'];
         $customer->email = $getReqData['email'];
         $customer->password = md5($getReqData['password']);
         $customer->gender = $getReqData['gender'];

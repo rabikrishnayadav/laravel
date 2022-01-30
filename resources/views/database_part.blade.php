@@ -558,7 +558,10 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 	<ol>
 		<li>Accessor</li>
 		It's uses when we have to show data from database into the browser with modification but not modified in database.<br>
-		All Accessor are used in model file.<br>
+		All Accessor are used in model file.<br><br>
+
+		An accessor transforms an Eloquent attribute value when it is accessed.<br>
+		Creat a <code>get{Attribute}Attribute</code> method on your model where <code>{Attribute}</code> is the 'studly' cased name of the column wish to access.<br>
 		Example:<br>
 		<code>
 			class Member extends Model {<br>
@@ -575,7 +578,10 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 		<li>Mutator</li>
 		It's uses when we are inserting the data into the database at that time we can add some extra data in database. which is not comming dirctly from the front-end.<br>
 		It's directly mean we can modify the data before the save data into database.<br>
-		All Mutator are used in model file.<br>
+		All Mutator are used in model file.<br><br>
+
+		A mutator transform an Eloquent attribute value when it is set.<br>
+		Define a <code>set{attribute}Attribute</code> method on the model where <code>{attribute}</code> is the 'studly' cased name of the column wish to access.<br>
 		Example:<br>
 		<code>
 			// function for save extra data in database<br>

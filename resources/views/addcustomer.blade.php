@@ -42,7 +42,7 @@
 				@csrf
 				<div class="div">
 					<label for="name">Name:</label>
-					<input type="text" name="name" placeholder=" enter name " value="{{$customer->name}}" required>
+					<input type="text" name="name" placeholder=" enter name " value="{{$customer->user_name}}" required>
 					<span style="color:red">
 						@error('name')
 						{{$message}}

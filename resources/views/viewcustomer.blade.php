@@ -33,7 +33,7 @@
 		<tbody>
 			@foreach($customers as $data)
 			<tr>
-				<td>{{$data->name}}</td>
+				<td>{{$data->user_name}}</td>
 				<td>{{$data->email}}</td>
 				<td>
 					@if($data->gender == 'M')
@@ -44,7 +44,7 @@
 					Other
 					@endif
 				</td>
-				<td>{{get_formated_date($data->dob, "d-m-y")}}</td>
+				<td>{{$data->dob}}</td>
 				<td>{{$data->address}}</td>
 				<td>{{$data->state}}</td>
 				<td>{{$data->country}}</td>
