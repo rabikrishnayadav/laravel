@@ -35,24 +35,21 @@
 	</head>
 	<body>
 		<x-header />
-		@if(session('username'))
-		<h3>Data Saved for {{session('username')}} </h3>
-		@endif
 		<div class="container" id="form">
-			<h1 style="text-align:center">Customer Registration Page</h1><br>
+			<h1 style="text-align:center">{{$title}}</h1><br>
 		<div>
-			<form method="post" action="{{url('/')}}/customers">
+			<form method="post" action="{{$url}}">
 				@csrf
 				<div class="div">
 					<label for="name">Name:</label>
-					<input type="text" name="name" placeholder=" enter name " value="{{old('name')}}" required>
+					<input type="text" name="name" placeholder=" enter name " value="{{$customer->name}}" required>
 					<span style="color:red">
 						@error('name')
 						{{$message}}
 						@enderror
 					</span>
 					<label for="email">Email ID:</label>
-					<input type="email" name="email" placeholder=" enter email id " value="{{old('email')}}" required>
+					<input type="email" name="email" placeholder=" enter email id " value="{{$customer->email}}" required>
 					<span style="color:red">
 						@error('email')
 						{{$message}}
@@ -75,34 +72,40 @@
 					</span>
 					<br><br>
 					<label for="country">Country:</label>
-					<input type="text" name="country" value="{{old('country')}}" required>
+					<input type="text" name="country" value="{{$customer->country}}" required>
 					<span style="color:red">
 						@error('country')
 						{{$message}}
 						@enderror
 					</span>
 					<label for="state">State:</label>
-					<input type="text" name="state" value="{{old('state')}}" required>
+					<input type="text" name="state" value="{{$customer->state}}" required>
 					<span style="color:red">
 						@error('state')
 						{{$message}}
 						@enderror
 					</span><br><br>
 					<label for="address">Address:</label>
-					<input type="text" name="address" placeholder=" enter address " value="{{old('address')}}" required>
+					<input type="text" name="address" placeholder=" enter address " value="{{$customer->address}}" required>
 					<span style="color:red">
 						@error('address')
 						{{$message}}
 						@enderror
 					</span><br><br>
 						Gender:
-					<input type="radio" name="gender" value="M">Male &nbsp;&nbsp;
-					<input type="radio" name="gender" value="F">Female &nbsp;&nbsp;
-					<input type="radio" name="gender" value="O">Other &nbsp;&nbsp;
+					<input type="radio" name="gender" value="M"
+					{{$customer->gender == "M" ? "checked" : ""}}
+					/>Male &nbsp;&nbsp;
+					<input type="radio" name="gender" value="F"
+					{{$customer->gender == "F" ? "checked" : ""}}
+					/>Female &nbsp;&nbsp;
+					<input type="radio" name="gender" value="O"
+					{{$customer->gender == "O" ? "checked" : ""}}
+					/>Other &nbsp;&nbsp;
 					Date of Birth:
-					<input type="date" name="date">
+					<input type="date" name="date" value="{{$customer->dob}}">
 					<br><br>
-					<button type="submit" class="btn">Register</button>
+					<button type="submit" class="btn">Submit</button>
 					<button type="reset" class="btn">Reset</button>
 				</div>
 			</form>
