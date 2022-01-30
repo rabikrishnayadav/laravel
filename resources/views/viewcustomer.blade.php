@@ -27,6 +27,7 @@
 				<th>State</th>
 				<th>Country</th>
 				<th>Status</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -54,6 +55,7 @@
 					Inactive
 					@endif
 				</td>
+				<td><a href="{{url('/customer/delete/')}}/{{$data->id}}">Delete</a></td>
 			</tr>
 			@endforeach
 		</tbody>

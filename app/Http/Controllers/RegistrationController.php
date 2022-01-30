@@ -37,9 +37,17 @@ class RegistrationController extends Controller
     }
 
     function viewCustomerData(){
-        
+
         $customers = Customer::all();
         $data = compact('customers');
         return view('viewcustomer')->with($data);
+    }
+
+    function deleteCustomerData($id){
+        $customer = Customer::find($id);
+        if (!is_null($customer)) {
+            $customer->delete();
+        }
+        return redirect('/customer/view');
     }
 }
