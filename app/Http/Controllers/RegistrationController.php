@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     function index(){
-        return view('register');
+        return view('addcustomer');
     }
 
-    function register(Request $getReqData){
+    function addcustomerData(Request $getReqData){
 
         $getReqData->validate(
             [
