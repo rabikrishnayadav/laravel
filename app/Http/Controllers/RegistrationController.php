@@ -22,9 +22,7 @@ class RegistrationController extends Controller
                 'password_confirmation' => 'required'
             ]
         );
-        echo "<pre>";
-        print_r($getReqData->all());
-
+        
         $customer = new Customer;
         $customer->name = $getReqData['name'];
         $customer->email = $getReqData['email'];
@@ -35,5 +33,13 @@ class RegistrationController extends Controller
         $customer->country = $getReqData['country'];
         $customer->dob = $getReqData['date'];
         $customer->save();
+        return redirect('/customer/view');
+    }
+
+    function viewCustomerData(){
+        
+        $customers = Customer::all();
+        $data = compact('customers');
+        return view('viewcustomer')->with($data);
     }
 }
