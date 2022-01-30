@@ -17,43 +17,10 @@
 	<form method="post" action="{{url('/')}}/registered">
 		@csrf
 	<div>
-		<label for="username">Username:</label>
-		<input type="text" name="username" placeholder=" enter username " value="{{old('username')}}" required>
-		<span style="color:red">
-			@error('username')
-			{{$message}}
-			@enderror
-		</span>
-	</div><br>
-	<div>
-		<label for="email">Email ID:</label>
-		<input type="email" name="email" placeholder=" enter email id " value="{{old('email')}}" required>
-		<span style="color:red">
-			@error('email')
-			{{$message}}
-			@enderror
-		</span>
-	</div><br>
-
-	<div>
-		<label for="password">Password:</label>
-		<input type="password" name="password" placeholder=" enter password " required><br>
-		<span style="color:red">
-			@error('password')
-			{{$message}}
-			@enderror
-		</span>
-	</div><br>
-	<div>
-		<label for="password">Confirm Password:</label>
-		<input type="password" name="password_confirmation" placeholder=" enter password " required>
-		<span style="color:red">
-			@error('password_confirmation')
-			{{$message}}
-			@enderror
-		</span>
-	</div><br>
-	<div>
+		<x-input type="text" name="username" label="Name" placeholder="enter username"/>
+		<x-input type="email" name="email" label="Email" placeholder="enter email id"/>
+		<x-input type="password" name="password" label="Password" placeholder="enter password"/>
+		<x-input type="password" name="password_confirmation" label="Confirm Password" placeholder="enter same password"/>
 		<button type="submit">Register</button>
 		<button type="reset">Reset</button>
 	</div>
