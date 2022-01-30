@@ -44,10 +44,10 @@
 			<form method="post" action="{{url('/')}}/customers">
 				@csrf
 				<div class="div">
-					<label for="username">Username:</label>
-					<input type="text" name="username" placeholder=" enter username " value="{{old('username')}}" required>
+					<label for="name">Name:</label>
+					<input type="text" name="name" placeholder=" enter name " value="{{old('name')}}" required>
 					<span style="color:red">
-						@error('username')
+						@error('name')
 						{{$message}}
 						@enderror
 					</span>

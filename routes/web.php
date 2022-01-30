@@ -184,4 +184,4 @@ Route::get('/mail',function(){
 */
 
 Route::get('/customer',[RegistrationController::class,'index']);
-Route::post('customers',[RegistrationController::class,'addcustomerData']);
+Route::post('/customers',[RegistrationController::class,'addcustomerData']);
