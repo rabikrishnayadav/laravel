@@ -86,6 +86,38 @@ if (!function_exists('get_formated_date')) {<br>
 	}<br>
 }<br>
 	</code>
+</div><br><hr><br>
+<div class="container">
+	<h2>Handle Session in Laravel</h2>
+	Session is temporary data storing element.<br>
+	Session is used for store the user data once in session and show(retrive) at many (times)place or pages throughout the website.<br>
+	<ol>
+		<li>Retrieving Session Data:</li>
+		$request->session()->get('key')<br>
+		session('key');<br><br>
+
+		<li>Retrieving All Session Data</li>
+		$request->session()->all()<br>
+		session()->all()<br><br>
+		
+		<li>Determining If An Item Exists In The Session</li>
+		$request->session()->has('key')<br>
+		session()->key('key')<br><br>
+		
+		<li>Storing Data:</li>
+		$request->session()->put('key','value');<br>
+		session(['key' => 'value']);<br><br>
+		
+		<li>Flash Data:</li>
+		For temporary data one time execute(display) then hide.<br>
+		$request->session()->flash('status','Task was sccessful');<br>
+		session()->all()<br><br>
+
+		<li>Deleting Data:</li>
+		$request->session()->forget('key');		// for one session delete<br>
+		$request->session()->forget(['key1','key2']);	// for multiple session delete<br>
+		$request->session()-flush();	// for all session delete<br><br>
+	</ol>
 </div>
 </body>
 </html>

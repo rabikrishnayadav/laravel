@@ -35,6 +35,13 @@
 	</head>
 	<body>
 		<x-header />
+		<h3>Hello, 
+			@if (session()->has('user_name'))
+			{{session()->get('user_name').'.'}}
+			@else
+			User.
+			@endif
+		</h3>
 		<div class="container" id="form">
 			<h1 style="text-align:center">{{$title}}</h1><br>
 		<div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberQueryBuilder;
@@ -189,3 +190,35 @@ Route::get('/customer/view',[RegistrationController::class,'viewCustomerData']);
 Route::get('/customer/delete/{id}',[RegistrationController::class,'deleteCustomerData'])->name('customer.delete');
 Route::get('/customer/edit/{id}',[RegistrationController::class,'editCustomerData'])->name('customer.edit');
 Route::post('/customer/update/{id}',[RegistrationController::class,'updateCustomerData']);
+
+/*
+|--------------------------------------------------------------------------------------
+|                               CRUD of Session
+|--------------------------------------------------------------------------------------
+*/
+
+// for set(store data) in session
+Route::get('set-session', function(Request $request){
+
+    $request->session()->put('user_name','Rabi K Yadav');
+    $request->session()->put('user_id','123');
+    $request->session()->put('user_age','25');
+    $request->session()->flash('status','Successful'); // this will execute onece and after refresh the page it will hide.
+    return redirect('get-all-session');
+});
+
+// for get(retrive) data from session
+Route::get('get-all-session', function(){
+    session()->get('user_name').'.'; // for show single session
+    session()->get('user_age').'.'; // for show single session
+    $session = session()->all();    // for show all session
+    print_data($session);
+});
+
+// delete data from dession
+Route::get('delete-session', function(){
+    session()->forget('user_name'); // for delete single session
+    session()->forget(['user_name','user_id']); // for delete multiple session
+    session()->flush(); // for delete all session
+    return redirect('get-all-session');
+});
