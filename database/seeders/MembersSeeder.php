@@ -23,7 +23,9 @@ class MembersSeeder extends Seeder
         DB::table('members')->insert([
             'name'=>Str::random(5),
             'email'=>Str::random(3).'@gmail.com',
-            'address'=>Str::random(10)
+            'address'=>Str::random(7),
+            'contact'=>Str::random(10),
+            'group_id'=>2
         ]);
     }
 }

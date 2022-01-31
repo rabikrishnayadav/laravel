@@ -9,6 +9,7 @@ use App\Http\Controllers\AggregateController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\IndexController;
 use App\Mail\SampleMail;
 /*
 |--------------------------------------------------------------------------
@@ -158,20 +159,21 @@ Route::get('avg',[AggregateController::class,'avgOperation']);
 
 /*
 |--------------------------------------------------------------------------------------
+|                               Eloquent Relationship
+|--------------------------------------------------------------------------------------
 */
+
+Route::get('/data',[IndexController::class,'index']);
 
 // making path for employee data
 Route::get("employee",[EmployeeController::class,"getEmployeeData"]);
-
 
 // route for relation data show path
 Route::get("one_to_one_relation",[EmployeeController::class,"onetoOne"]);
 Route::get("one_to_many_relation",[EmployeeController::class,"onetoMany"]);
 
-
 // route for model binding
 Route::get('device/{key:name}',[DeviceController::class,"deviceIndex"]);
-
 
 // route for mail template
 Route::get('/mail',function(){
@@ -231,4 +233,3 @@ Route::get('delete-session', function(){
 /*
 |--------------------------------------------------------------------------------------
 */
-

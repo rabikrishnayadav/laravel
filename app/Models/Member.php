@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'member_id';
     public $timestamps=false; // if do not want to creted update_on or created_on field in table
 
     function getNameAttribute($value){
@@ -25,5 +26,10 @@ class Member extends Model
 
     public function setAddressAttribute($value){
         return $this->attributes['address']= $value.',Janakpur Nepal';
+    }
+
+    // method for get group from one to one relation
+    function getGroup(){
+        return $this->hasOne('App\Models\Group','group_id');
     }
 }
