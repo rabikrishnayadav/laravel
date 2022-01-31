@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index(){
-        $data =  Member::with('getGroup')->find(2);
+        $data =  Member::with('getOneToMany')->get();
         return $data;
     }
 }

@@ -29,7 +29,12 @@ class Member extends Model
     }
 
     // method for get group from one to one relation
-    function getGroup(){
-        return $this->hasOne('App\Models\Group','group_id');
+    function getOneToOne(){
+        return $this->hasOne('App\Models\Group','group_id','group_id');
+    }
+
+    // method for get group from one to many relation
+    function getOneToMany(){
+        return $this->hasMany('App\Models\Group','group_id','group_id');
     }
 }
