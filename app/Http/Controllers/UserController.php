@@ -42,7 +42,8 @@ class UserController extends Controller
     }
 
     function loadProfilePage(Request $req){
-        return $req->file('avtar')->store('img');
+        $fileNewName = 'vs-'.time().'.'. $req->file('avtar')->getClientOriginalExtension();
+        return $req->file('avtar')->storeAs('public/profile-img',$fileNewName);
     }
 
     // create function for database connection
