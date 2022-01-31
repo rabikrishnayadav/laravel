@@ -40,13 +40,13 @@ Route::get('/intermediate', function () {
 
 // this route for calling the controller of register page for show on the browser
 Route::post('register',[UserController::class,'loadRegisterPage']);
-Route::view('registration-page','register');
+Route::view('registration-page','register')->name('user.register');
 
 // calling the view for the login page first method
 // Route::view('login','login');
 
 // calling the controller for view file login page
-Route::post('login',[UserController::class,'loadLoginPage']);
+Route::post('login',[UserController::class,'loadLoginPage'])->name('user.login');
 
 // create route for profile page
 Route::view('profile','profile');
@@ -68,6 +68,11 @@ Route::get('/login', function(){
     return view('login');
 });
 
+Route::get('/access-denied', function(){
+    echo "You are not Loged in please login first";
+    die;
+});
+
 // creating route for no access page
 Route::view('access-denied-page','noaccess');
 
@@ -79,8 +84,7 @@ Route::view('access-denied-page','noaccess');
     });
 
 // creat route for froup middleware
-Route::group(['middleware'=>['protectPage']],function(){
-    
+Route::group(['middleware'=>['protectPage']],function(){    
 //this route for calling the view users page
 Route::get('user-data',[UserController::class,'usersfun']);    
 });
@@ -103,11 +107,11 @@ Route::view('userdataapi','userdata_api');
 
 
 // creating route for addmember into database
-Route::view('add','addmember');
+Route::view('add','addmember')->middleware('protectedUserPage');
 Route::post('add',[MemberController::class,'addMemberData']);
 
 // creating route for show the member from database
-Route::get('member_list',[MemberController::class,'showMemberData']);
+Route::get('member_list',[MemberController::class,'showMemberData'])->middleware('protectedUserPage');
 
 // creating the route for update the member data
 Route::get('update/{id}',[MemberController::class,'showForUpdateMemberData']);

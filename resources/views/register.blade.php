@@ -13,7 +13,7 @@
 <h3>Data Saved for {{session('username')}} </h3>
 @endif
 <h1 style="text-align:center">Registration Page</h1>
-<div class="container">
+<div class="container" style="text-align:center"><br><br>
 	<form method="post" action="register">
 		@csrf
 	<div>
@@ -23,5 +23,6 @@
 		<button type="submit">Register</button>
 		<button type="reset">Reset</button>
 	</div>
-</form>
+</form><br><br>
+Already Have Account!<a href="{{route('user.login')}}"><button>Login Here</button></a>
 </div>

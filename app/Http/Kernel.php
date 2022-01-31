@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'protectedPage' => \App\Http\Middleware\ageCheck::class,        
+        'protectedUserPage' => \App\Http\Middleware\userCheck::class,        
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

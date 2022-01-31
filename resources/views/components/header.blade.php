@@ -26,6 +26,11 @@
     ul li a:hover{
         text-decoration: none;
     }
+    #btn{
+        margin: 20px;
+        padding: 5px;
+        float: right;
+    }
 </style>
 <div id="header">
     <ul>
@@ -34,4 +39,5 @@
         <li style="float: left;"><a href="/api">API Part</a></li>
         <li style="float: left;"><a href="/intermediate">Intermediate Part</a></li>
     </ul>
+    <a href="{{route('user.login')}}"><button id="btn">Login/Register</button></a>
 </div>

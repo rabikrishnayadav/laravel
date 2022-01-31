@@ -19,7 +19,10 @@
 	<input type="text" name="username" placeholder="enter username"><br><br>
 	<input type="password" name="password" placeholder="enter password"><br><br>
 	<button type="submit">Login</button>
-	</form><br><br><br><br>
+	</form><br><br>
+	Don't have account!
+	<a href="{{route('user.register')}}"><button>Register Here</button></a>
+	<br><br>
 
 
 </div>
