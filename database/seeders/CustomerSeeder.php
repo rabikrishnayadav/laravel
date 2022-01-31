@@ -16,16 +16,18 @@ class CustomerSeeder extends Seeder
     {
         // faker for add many data in database
         $faker = Faker::create();
-        $customer = new Customer;
-        $customer->user_name = $faker->name;
-        $customer->email = $faker->email;
-        $customer->password = $faker->password;
-        $customer->gender = 'O';
-        $customer->address = $faker->address;
-        $customer->state = $faker->state;
-        $customer->country = $faker->country;
-        $customer->dob = $faker->date;
-        $customer->save();
-        // return redirect('/customer/view');
+        for ($i=0; $i < 50; $i++) { 
+            $customer = new Customer;
+            $customer->user_name = $faker->name;
+            $customer->email = $faker->email;
+            $customer->password = $faker->password;
+            $customer->gender = 'O';
+            $customer->address = $faker->address;
+            $customer->state = $faker->state;
+            $customer->country = $faker->country;
+            $customer->dob = $faker->date;
+            $customer->save();
+            // return redirect('/customer/view');
+        }
     }
 }
