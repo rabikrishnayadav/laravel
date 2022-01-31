@@ -9,6 +9,13 @@
 			width: 98%;
 			margin: auto;
 		}
+		.div table a{
+			text-decoration: none;
+			padding: 5px;
+		}
+		.w-5{
+		display: none;
+		}
 	</style>
 </head>
 <body>
@@ -19,10 +26,8 @@
 			<div>
 				<input type="search" name="search" value="{{$search}}" placeholder="search by name or email">&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href=""><button>Search</button></a>
-				<a href="{{url('/customer/view')}}"><button type="button">Reset</button>
-				</a><a href="{{route('customer.trash')}}" style="float:right">
-				<button>View Trash</button>
-				</a><br>
+				<a href="{{url('/customer/view')}}"><button type="button">Reset</button></a>
+				<a href="{{route('customer.trash')}}" style="float:right">View Trash</a><br>
 			</div><br>
 		</div>
 	</form>
@@ -60,18 +65,20 @@
 				<td>{{$data->country}}</td>
 				<td>
 					@if($data->status == '1')
-					Active
+					<a href="" style="background-color:green; color:white;"><span>Active</span></a>
 					@else
-					Inactive
+					<a href="" style="background-color:red; color:white;"><span>Inactive</span></a>
 					@endif
 				</td>
-				<td><a href="{{route('customer.edit',['id' => $data->id])}}">Update</a></td>
-				<td><a href="{{route('customer.delete',['id' => $data->id])}}">Trash</a></td>
+				<td><a href="{{route('customer.edit',['id' => $data->id])}}" style="background-color:gold; color:black;">Update</a></td>
+				<td><a href="{{route('customer.delete',['id' => $data->id])}}" style="background-color:red; color:white;">Trash</a></td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
+	<div style="text-align:center; padding:10px;">
+		{{$customers->links();}}
+	</div>
 </div>
-
 </body>
 </html>

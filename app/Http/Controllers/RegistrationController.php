@@ -44,7 +44,7 @@ class RegistrationController extends Controller
         if ($search != "") {
             $customers = Customer::where('user_name','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
         }else{
-            $customers = Customer::all();
+            $customers = Customer::paginate(10);
         }
         $data = compact('customers','search');
         return view('viewcustomer')->with($data);
