@@ -700,32 +700,6 @@ Route::get('delete_data',[MemberQueryBuilder::class,'deleteMember']);<br>
 
 </div><br><hr><br>
 <!------------------------------------------------------------------------------------- -->
-<br>
-<div class="container">
-	<h2>Markdown Mail Template</h2>
-	This is a laravel mailing template it's use for mail some one.<br>
-	1) For Generating mail template<br>
-	Syntax: php artisan make:mail NameOfMailClass --markdown=filePath.fileName<br>
-	Example: php artisan make:mail SampleMail -- markdown=emails.SampleMail<br>
-
-	After Entered the command there is two file will create one in 'app/Mail' and fileName.php or another in 'resources/views/emails' fileName.blade.php<br>
-
-	For Designing the template edit the SampleMial.blade.php file<br>
-
-	2) make route for this<br>
-	For making the route first import the mail class in web.php<br>
-	E.g: use App\Mail\SampleMail;<br>
-	Now Create Route<br>
-	Example:<br>
-	<code>
-		// route for mail template<br>
-		Route::get('/mail',function(){<br>
-		    return new SampleMail();<br>
-		});<br>
-	</code>
-	3) For see the result goto url: http://127.0.0.1:8000/mail<br>
-</div><hr>
-<!------------------------------------------------------------------------------------- -->
 <h1 style="text-align:center; background:pink;"><br>For Laravel API Part<br><a href="/api">Click here</a><br><br></h1>
 </body>
 </html>

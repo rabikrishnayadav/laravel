@@ -318,6 +318,180 @@ Basically there are so many method for crreating the Api Some of them Are.<br>
 	e) upload the file and send it.<br>
 	E.g: http://127.0.0.1:8000/api/upload<br>
 </div><br><hr><br>
+<!------------------------------------------------------------------------------------- -->
+<br>
+<div class="container">
+	<h2>Markdown Mail Template</h2>
+	This is a laravel mailing template it's use for mail some one.<br>
+	1) For Generating mail template<br>
+	Syntax: php artisan make:mail NameOfMailClass --markdown=filePath.fileName<br>
+	Example: php artisan make:mail SampleMail -- markdown=emails.SampleMail<br>
+
+	After Entered the command there is two file will create one in 'app/Mail' and fileName.php or another in 'resources/views/emails' fileName.blade.php<br>
+
+	For Designing the template edit the SampleMial.blade.php file<br>
+
+	2) make route for this<br>
+	For making the route first import the mail class in web.php<br>
+	E.g: use App\Mail\SampleMail;<br>
+	Now Create Route<br>
+	Example:<br>
+	<code>
+		// route for mail template<br>
+		Route::get('/mail',function(){<br>
+		    return new SampleMail();<br>
+		});<br>
+	</code>
+	3) For see the result goto url: http://127.0.0.1:8000/mail<br>
+</div><hr><br>
+<div class="container">
+	<h2 style="text-align:center">API authentication with Sanctum</h2>
+	<ol>
+		<li>setup database in '.env' file</li>
+		<code>
+			DB_DATABASE=first_laravel<br>
+			DB_USERNAME=root<br>
+			DB_PASSWORD=<br>
+		</code><br>
+		<li>Install Laravel Sanctum.</li>
+		Syntax: composer require laravel/sanctum<br><br>
+		<li>Publish the Sanctum configuration and migration files.</li>
+		Syntax: php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"<br><br>
+		<li>Run database migration</li>
+		Syntax: php artisan migrate<br><br>
+		<li>Add the Sanctum's middleware inside middlewareGroups.</li>
+		For add goto dir 'app\kernel.php' file and open it then paste in 'api' group.<br>
+		<code>
+		protected $middlewareGroups = [<br>
+		...<br>
+		'api' => [<br>
+			EnsureFrontendRequestsAreStateful::class,<br>
+			'throttle:60,1',<br>
+			\Illuminate\Routing\Middleware\SubstituteBindings::class,<br>
+		],<br>
+		];<br>
+		</code><br>
+		
+		<li>Use tokens for useres</li>
+		For this goto dir 'app\models' inside 'User.php' file<br>
+		i) import has api token<br>
+		Ex: use Laravel\Sanctum\HasApiTokens;<br>
+		ii) use api has token in class<br>
+		Ex: use HasApiTokens, HasFactory, Notifiable;<br><br>
+
+		<li>Let's create the seeder for the User model</li>
+		Syntax: php artisan make:seeder UserTableSeeder<br>
+		After created seeder file then open dir is 'database/seeders' find fileName and open it.<br>
+		i) Import<br>
+		Ex:<br>
+		use Illuminate\Support\Facades\DB;<br>
+		use Illuminate\Support\Facades\Hash;<br>
+		ii) write code for insert dummy data inside UserTableSeeder class in run() method.<br>
+		Example:<br>
+		<code>
+			DB::table('users')->insert([<br>
+            'name' => 'Rabi Kumar',<br>
+            'email' => 'kumar@mail.com',<br>
+            'password' => Hash::make('password')<br>
+        ]);<br>
+		</code>
+		iii) seed users table with user<br>
+		Ex: php artisan db:seed --class=UserTableSeeder<br>
+
+		<li>Create Controller</li>
+		Ex: php artisan make:controller UserApiController<br>
+		After Created Controller then open it.<br>
+		i) import<br>
+		Ex:<br>
+		a) use Illuminate\Support\Facades\Hash;<br>
+		b) use App\Models\User;<br>
+		ii) make method inside UserApiController class<br>
+		Example:<br>
+		<code>
+			function index(Request $request){<br>
+        $user = User::where('email', $request->email)->first();<br>
+        if (!$user || !Hash::check($request->password, $user->password)) {<br>
+            return response([<br>
+                'message' => ['These credentials do not match our records']<br>
+            ], 404);<br>
+        }<br>
+        $token = $user->createToken('my-app-token')->plainTextToken;<br>
+        $response = [<br>
+            'user' => $user,<br>
+            'token' => $token<br>
+        ];<br>
+        return response($response, 201);<br>
+    	}<br>
+		</code><br>
+		<li>Make Route for this inside 'api.php' file</li>
+		Before making route first import the controller<br>
+		Ex:<br>
+		use App\Http\Controllers\UserApiController;<br>
+		// make route<br>
+		Route::post('login',[UserApiController::class,'index']);<br><br>
+		<li>Now goto the post man send request with Post Method</li>
+		Example 1:<br>
+		a) select POST method<br>
+		b) select 'raw' option<br>
+		c) select JSON from dropdown<br>
+		d) write code<br>
+		Ex:<br>
+		<code>
+			{<br>
+		    "email":"kumar@mail.com",<br>
+		    "password":"123"<br>
+			}<br>
+		</code>
+		e) send it on routed url<br>
+		Ex: http://127.0.0.1:8000/api/login<br><br>
+
+		Example 2:<br>
+		here make authenticate route for get the user details.<br>
+		Ex:<br>
+		Route::middleware('auth:sanctum')->get('/user', function (Request $request) {<br>
+    	return $request->user();<br>
+		});<br>
+
+		For ckeck send GET method on url : http://127.0.0.1:8000/api/user<br>
+		Then it will show error. it mean our authentication is working<br>
+		Now for get the result we must have token<br>
+		For Giving the token<br>
+		a) select 'header' option<br>
+		b) put 'Authorization' inside KEY<br>
+		c) put 'Bearer tokenKey' inside VALUE<br>
+		Ex: Bearer 2|ygB2aIAmqeG02DjBDx8RQtVii7GmaE3o4iytUhsR<br>
+		Now again send get request on url: http://127.0.0.1:8000/api/user<br>
+		Then will get the result.<br><br>
+
+		<li>For Secure with (Authentication) Every API</li>
+		For secure all api make middleware Group in 'api.php' file<br>
+		Example:<br>
+		<code>
+			Route::group(['middleware' => 'auth:sanctum'], function(){<br>
+    		// add list of api for secure<br>
+			Route::get('data',[dummyApiController::class,'getData']);<br>
+			Route::get('list/{id?}',[DeviceController::class,'deviceList']);<br>
+			Route::post('add',[DeviceController::class,'insertDevice']);<br>
+			Route::put('update',[DeviceController::class,'updateDevice']);<br>
+			Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);<br>
+			Route::get('search/{name}',[DeviceController::class,'searchDevice']);<br>
+			Route::post('valid',[DeviceController::class,'validData']);<br>
+			Route::apiResource('member',resourceMemberController::class);<br>
+			Route::post('upload',[FileController::class,'fileUpload']);<br>
+			});<br>
+		</code><br>
+		Here all the list api are secured with sanctum<br>
+		Now before open every api on postman<br>
+		First must have a token<br>
+		For putting the token on postpan<br>
+		a) select 'header' option<br>
+		b) put 'Authorization' inside KEY<br>
+		c) put 'Bearer tokenKey' inside VALUE<br>
+		Ex: Bearer 2|ygB2aIAmqeG02DjBDx8RQtVii7GmaE3o4iytUhsR<br>
+		Now again send get request on url<br>
+		Then will get the result.<br><br>
+	</ol>
+</div><br><hr><br>
 <h1 style="text-align:center">Goto Intermediate Level <a href="/intermediate"> click here</a></h1><br>
 </body>
 </html>

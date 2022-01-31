@@ -14,6 +14,7 @@ use App\Http\Controllers\resourceMemberController;
 
 // importing the file controller
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\UserApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,29 +31,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// route for dummy api
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    // add list of api for secure
 Route::get('data',[dummyApiController::class,'getData']);
-
-// route for get list data with get method
 Route::get('list/{id?}',[DeviceController::class,'deviceList']);
-
-// route for insert data in device with api
 Route::post('add',[DeviceController::class,'insertDevice']);
-
-// route for update data in device with api
 Route::put('update',[DeviceController::class,'updateDevice']);
-
-// route for update data in device with api
 Route::delete('delete/{id}',[DeviceController::class,'deleteDevice']);
-
-// route for search list data before search data we have to get the data with get method
 Route::get('search/{name}',[DeviceController::class,'searchDevice']);
-
-// route for insert valid data in device table with API
 Route::post('valid',[DeviceController::class,'validData']);
-
-// route for api with resource
 Route::apiResource('member',resourceMemberController::class);
-
-// route for upload file with api
 Route::post('upload',[FileController::class,'fileUpload']);
+});
+
+// route for api authentication
+Route::post('login',[UserApiController::class,'index']);
