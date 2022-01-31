@@ -225,3 +225,8 @@ Route::get('delete-session', function(){
     session()->flush(); // for delete all session
     return redirect('get-all-session');
 });
+
+/*
+|--------------------------------------------------------------------------------------
+*/
+

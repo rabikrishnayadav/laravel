@@ -6,9 +6,7 @@
 	<title></title>
 	<style type="text/css">
 		.div{
-			width: 80%;
-			margin-left: 30px;
-			margin-right: 30px;
+			width: 98%;
 			margin: auto;
 		}
 	</style>
@@ -16,11 +14,19 @@
 <body>
 <x-header /><br><br>
 <div class="div">
-	<a href="{{route('customer.trash')}}">
-	<button>View Trash</button>
-	</a>
-	<h2 style="text-align:center">Customers Data List</h2>
-	<table border="1" cellpadding="10" align="center">
+	<form action="">
+		<div><h2 style="text-align:center">Customers Data List</h2>
+			<div>
+				<input type="search" name="search" value="{{$search}}" placeholder="search by name or email">&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href=""><button>Search</button></a>
+				<a href="{{url('/customer/view')}}"><button type="button">Reset</button>
+				</a><a href="{{route('customer.trash')}}" style="float:right">
+				<button>View Trash</button>
+				</a><br>
+			</div><br>
+		</div>
+	</form>
+	<table border="1" cellpadding="5" align="center" style="clear:both;">
 		<thead>
 			<tr>
 				<th>Name</th>
