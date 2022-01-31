@@ -152,13 +152,36 @@
                 It is a laravel template engine. It's work is converting the plan tags into PHP tags.<br> It's all example available in users.blade.php file.
                 <br>It has many advantage like Blade Template Expression,Conditions,For and Foreach Loop etc.
                 <li>Middleware</li>
+                Middleware provide a convenient mechanism for inspecting and filtering HTTP requests entering your application.<br>
+                    
                 There are Three Types of Middleware<br>
                 For Creating a new middleware.<br>
-                Syntax: php artisan make:middleware mdiddlewareName<br>
+                Syntax: php artisan make:middleware middlewareName<br>
                 Example: php artisan make:middleware ageCheck<br>
                 for check it's created or not goto dir 'App\Http\Middleware' folder and find the middleware name there is available.<br>
                 <ul>
-                    <li>Middleware</li>
+                    <li>Global Middleware</li>
+                    If we want a middleware to run during every HTTP request to application.<br>
+                    List the middleware class in the <mark>$middleware</mark> property in dir 'app\Http\Kernal.php'<br>
+                    Example:<br>
+                    <code>
+                        protected $middleware = [<br>
+                        ...<br>
+                        \App\Http\Middleware\WebGuard::class,<br>
+                        ],<br>
+                    </code>
+                    After registering the middleware then make condition on WebGuard.php file<br>
+                    Under:<br>
+                    <code>
+                        public function handle(Request $request, Closure $next){<br>
+                        if ($request->age <18) {<br>
+                        echo 'You are not allow to access the page';<br>
+                        die;<br>
+                        }<br>
+                        return $next($request);<br>
+                        }<br>
+                    </code>
+                    It's done now open the any url then it will check the user age and only age has 18 or above 18 user can access all the pages.<br>
                     <li>Route Middleware</li>
                     This middleware is use on one route at a time. then for another route again we have to write  same code for touting.<br>
                     After the creating the middleware register it<br>
